@@ -1,11 +1,13 @@
 package com.fitnessclub;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.fitnessclub.dto.Member;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Schedule {
 
-    private Map<Integer[], String[]> scheduleMap = new HashMap<>();
+    private List<List<Member>> scheduleList;
     private static Schedule instance = null;
 
     private Schedule() {
@@ -19,7 +21,28 @@ public class Schedule {
         return instance;
     }
 
-    public Map<Integer[], String[]> getScheduleMap() {
-        return scheduleMap;
+    public List<List<Member>> getScheduleList() {
+        return scheduleList;
     }
+
+
+    //TODO: Ne treba mi lista unutar metode, dva fora jedan kroz jednu, drugi kroz drugu listu..
+    public List<List<Member>> reservation(Member member, int[] hours) {
+
+        List<Member> members = new ArrayList<>();
+
+        for (int i = 0; i < hours.length; i++){
+
+            if(scheduleList.get(hours[i]).isEmpty()){
+                members.add(member);
+            }
+
+            scheduleList.add(members);
+        }
+
+        return scheduleList;
+
+    }
+
+
 }
