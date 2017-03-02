@@ -13,17 +13,14 @@ public class SchedulerTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void reservationTestForArrayNull() {
-
         Member m = new Member("Marko", "Devic", 12345);
         Scheduler.getInstance().reserve(m, new int[]{});
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void reservationTestForArrayBiggerThan3() {
-
         Member m = new Member("Marko", "Devic", 12345);
         Scheduler.getInstance().reserve(m, new int[]{1, 2, 4, 5});
-
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -45,9 +42,8 @@ public class SchedulerTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void deleteReservationForEmptyHours() {
+    public void deleteReservationForEmptyArray() {
         Member m = new Member("Marko", "Devic", 123);
         Scheduler.getInstance().deleteReservation(m, new int[]{});
     }
-
 }

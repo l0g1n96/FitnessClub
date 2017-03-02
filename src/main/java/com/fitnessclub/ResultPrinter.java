@@ -1,7 +1,9 @@
 package com.fitnessclub;
 
+import com.fitnessclub.dto.FitnessOutput;
+
 public interface ResultPrinter {
 
-    public void print();
+    void print(FitnessOutput fitnessOutput);
 
 }

@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class ConsoleReader implements InputDataReader {
 
     @Override
-    public FitnessInput read() {
+    public FitnessInput read() throws Exception {
 
         Scanner s = new Scanner(System.in);
 
@@ -20,6 +20,10 @@ public class ConsoleReader implements InputDataReader {
 
         System.out.println("Choose an option by number:");
         int optionNumber = s.nextInt();
+
+        if(optionNumber > 3 || optionNumber <= 0){
+            throw new Exception("Option not in range 1 - 3");
+        }
 
         FitnessInput fitnessInput = new FitnessInput(optionNumber);
 

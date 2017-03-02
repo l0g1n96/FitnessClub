@@ -8,6 +8,8 @@ public class FitnessInput {
         this.optionNumber = optionNumber;
     }
 
+    public FitnessInput() {}
+
     public int getOptionNumber() {
         return optionNumber;
     }

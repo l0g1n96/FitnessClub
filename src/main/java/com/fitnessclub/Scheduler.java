@@ -29,6 +29,18 @@ public class Scheduler {
         return scheduledMembers;
     }
 
+    public void searchByLastname(Member member) {
+
+        for (int i = 0; i < scheduledMembers.length; i++) {
+            if (scheduledMembers[i].contains(member)) {
+                System.out.println("Member founded - ID:");
+                System.out.println(member.getId());
+            }else{
+                System.out.println("Not found");
+            }
+        }
+    }
+
     public void reserve(Member member, int[] hours) {
         if (member == null || hours.length <= 0 || hours.length > 3) {
             throw new IllegalArgumentException("No members, or you tried to reserve more than 3 hours");
