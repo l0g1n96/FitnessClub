@@ -1,32 +1,46 @@
 package com.fitnessclub;
 
-import com.fitnessclub.dto.FitnessInput;
-import com.fitnessclub.dto.FitnessOutput;
+import com.fitnessclub.dto.Member;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FitnessClub {
 
-    private InputDataReader input;
-    private DataHandler dataHandler;
-    private ResultPrinter printer;
+    Map<Date, Scheduler> schedulerMap;
 
-    public FitnessClub(InputDataReader input, DataHandler dataHandler, ResultPrinter printer) {
-        this.input = input;
-        this.dataHandler = dataHandler;
-        this.printer = printer;
+    public FitnessClub() {
+        this.schedulerMap = new HashMap<>();
     }
 
-    public void doWork() throws Exception {
+    public Map<Date, Scheduler> getSchedulerMap() {
+        return schedulerMap;
+    }
 
-        try {
+    public void register(Member member, Date date, int[] hours) {
+        Scheduler scheduler = schedulerMap.computeIfAbsent(date, d -> new Scheduler());
+        scheduler.reserve(member, hours);
+    }
 
-            FitnessInput inputData = input.read();
-            FitnessOutput output = dataHandler.doWork(inputData);
-            printer.print(output);
+    public void unregister(Member member, Date date, int[] hours) {
 
-        } catch (Exception e) {
-            throw e;
+        if(member == null || hours.length == 0 || hours.length > 3){
+            throw new IllegalArgumentException("No member");
         }
+
+        if (!schedulerMap.containsKey(date)) {
+            return;
+        }
+
+        Scheduler scheduler = schedulerMap.get(date);
+        scheduler.deleteReservation(member, hours);
     }
 
-
+    @Override
+    public String toString() {
+        return "FitnessClub{" +
+                "schedulerMap=" + schedulerMap +
+                '}';
+    }
 }

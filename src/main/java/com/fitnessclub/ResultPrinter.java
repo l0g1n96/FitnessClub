@@ -1,9 +1,11 @@
 package com.fitnessclub;
 
-import com.fitnessclub.dto.FitnessOutput;
+import com.fitnessclub.dto.Member;
+
+import java.util.Set;
 
 public interface ResultPrinter {
 
-    void print(FitnessOutput fitnessOutput);
+    void print(Set<Member> members);
 
 }

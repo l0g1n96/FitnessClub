@@ -4,6 +4,6 @@ import com.fitnessclub.dto.FitnessInput;
 
 public interface InputDataReader {
 
-    public FitnessInput read() throws Exception;
+    FitnessInput read() throws Exception;
 
 }

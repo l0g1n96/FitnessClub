@@ -1,15 +1,17 @@
 package com.fitnessclub;
 
-import com.fitnessclub.dto.FitnessOutput;
 import com.fitnessclub.dto.Member;
 
-public class ConsoleResultPrinter implements ResultPrinter{
+import java.util.Set;
+
+public class ConsoleResultPrinter implements ResultPrinter {
 
     @Override
-    public void print(FitnessOutput fitnessOutput) {
+    public void print(Set<Member> members) {
 
-        for(Member m : fitnessOutput.getMemberList()){
+        for(Member m : members){
             System.out.println(m.toString());
         }
+
     }
 }

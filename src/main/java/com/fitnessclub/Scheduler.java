@@ -2,6 +2,7 @@ package com.fitnessclub;
 
 import com.fitnessclub.dto.Member;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,38 +12,31 @@ public class Scheduler {
     private static final int MAX_CAPACITY = 16;
 
     private Set<Member>[] scheduledMembers;
-    private static Scheduler instance;
 
-    private Scheduler() {
+    public Scheduler() {
         constructArrayOfLists();
-    }
-
-    public static Scheduler getInstance() {
-        if (instance == null) {
-            instance = new Scheduler();
-        }
-
-        return instance;
     }
 
     public Set<Member>[] getScheduledMembers() {
         return scheduledMembers;
     }
 
-    public void searchByLastname(Member member) {
+    public void searchMembers(Member member) {
 
-        for (int i = 0; i < scheduledMembers.length; i++) {
-            if (scheduledMembers[i].contains(member)) {
+        for (Set<Member> scheduledMember : scheduledMembers) {
+            if (scheduledMember.contains(member)) {
                 System.out.println("Member founded - ID:");
                 System.out.println(member.getId());
-            }else{
+            } else {
                 System.out.println("Not found");
+                break;
             }
         }
     }
 
-    public void reserve(Member member, int[] hours) {
-        if (member == null || hours.length <= 0 || hours.length > 3) {
+    void reserve(Member member, int[] hours) {
+
+        if (member == null || hours.length == 0 || hours.length > 3) {
             throw new IllegalArgumentException("No members, or you tried to reserve more than 3 hours");
         }
 
@@ -57,6 +51,21 @@ public class Scheduler {
         }
     }
 
+    void deleteReservation(Member member, int[] hours) {
+
+        if (member == null || hours.length == 0 || hours.length > 3) {
+            throw new IllegalArgumentException("Member not initialized or reservation is bigger than 3 hours");
+        }
+
+        for (int hour : hours) {
+            if (hour < 0 || hour > WORKING_HOURS) {
+                throw new IllegalArgumentException("Fitness club does not have reservation for hour > 12 or hour < 0");
+            }
+
+            scheduledMembers[hour].remove(member);
+        }
+    }
+
     @SuppressWarnings("unchecked")
     private void constructArrayOfLists() {
         scheduledMembers = new Set[WORKING_HOURS];
@@ -65,18 +74,10 @@ public class Scheduler {
         }
     }
 
-    public void deleteReservation(Member member, int hour[]) {
-
-        if (member == null || hour.length > 3 || hour.length <= 0) {
-            throw new IllegalArgumentException("Member not initialized or reservation is bigger than 3 hours");
-        }
-
-        for (int hours : hour) {
-            if (hours < 0 || hours > WORKING_HOURS) {
-                throw new IllegalArgumentException("Fitness club does not have reservation for hour > 12 or hour < 0");
-            }
-
-            scheduledMembers[hours].remove(member);
-        }
+    @Override
+    public String toString() {
+        return "Scheduler{" +
+                "scheduledMembers=" + Arrays.toString(scheduledMembers) +
+                '}';
     }
 }
