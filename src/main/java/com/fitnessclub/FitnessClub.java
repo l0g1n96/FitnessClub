@@ -2,30 +2,30 @@ package com.fitnessclub;
 
 import com.fitnessclub.dto.Member;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
 public class FitnessClub {
 
-    Map<Date, Scheduler> schedulerMap;
+    Map<LocalDate, Scheduler> schedulerMap;
 
     public FitnessClub() {
         this.schedulerMap = new HashMap<>();
     }
 
-    public Map<Date, Scheduler> getSchedulerMap() {
+    public Map<LocalDate, Scheduler> getSchedulerMap() {
         return schedulerMap;
     }
 
-    public void register(Member member, Date date, int[] hours) {
+    public void register(Member member, LocalDate date, int[] hours) {
         Scheduler scheduler = schedulerMap.computeIfAbsent(date, d -> new Scheduler());
         scheduler.reserve(member, hours);
     }
 
-    public void unregister(Member member, Date date, int[] hours) {
+    public void unregister(Member member, LocalDate date, int[] hours) {
 
-        if(member == null || hours.length == 0 || hours.length > 3){
+        if (member == null || hours.length == 0 || hours.length > 3) {
             throw new IllegalArgumentException("No member");
         }
 

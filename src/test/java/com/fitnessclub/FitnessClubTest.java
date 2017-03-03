@@ -3,6 +3,7 @@ package com.fitnessclub;
 import com.fitnessclub.dto.Member;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class FitnessClubTest {
@@ -12,8 +13,7 @@ public class FitnessClubTest {
 
         Member m = new Member("Marko", "Devic", 12345);
         FitnessClub fitnessClub = new FitnessClub();
-        Date d = new Date();
-        fitnessClub.register(m, d, new int[]{13});
+        fitnessClub.register(m, LocalDate.now(), new int[]{13});
 
     }
 
@@ -22,8 +22,7 @@ public class FitnessClubTest {
 
         Member m = null;
         FitnessClub fitnessClub = new FitnessClub();
-        Date d = new Date();
-        fitnessClub.register(m, d, new int[]{1, 2, 3});
+        fitnessClub.register(m, LocalDate.now(), new int[]{1, 2, 3});
 
     }
 
@@ -33,7 +32,7 @@ public class FitnessClubTest {
         Member m = new Member("Marko", "Devic", 12345);
         FitnessClub fitnessClub = new FitnessClub();
         Date d = new Date();
-        fitnessClub.register(m, d, new int[]{});
+        fitnessClub.register(m, LocalDate.now(), new int[]{});
 
     }
 
@@ -43,7 +42,7 @@ public class FitnessClubTest {
         Member m = new Member("Marko", "Devic", 12345);
         FitnessClub fitnessClub = new FitnessClub();
         Date d = new Date();
-        fitnessClub.register(m, d, new int[]{1,2,3,4});
+        fitnessClub.register(m, LocalDate.now(), new int[]{1,2,3,4});
 
     }
 
@@ -53,7 +52,7 @@ public class FitnessClubTest {
         Member m = null;
         FitnessClub fitnessClub = new FitnessClub();
         Date d = new Date();
-        fitnessClub.unregister(m, d, new int[]{1,2,3});
+        fitnessClub.unregister(m, LocalDate.now(), new int[]{1,2,3});
 
     }
 
@@ -63,7 +62,7 @@ public class FitnessClubTest {
         Member m = new Member("Marko", "Devic", 1234);
         FitnessClub fitnessClub = new FitnessClub();
         Date d = new Date();
-        fitnessClub.unregister(m, d, new int[]{});
+        fitnessClub.unregister(m, LocalDate.now(), new int[]{});
 
     }
 
