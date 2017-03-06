@@ -15,9 +15,9 @@ Tvoj "softver" treba da omoguci:
 a) da izbaci spisak clanova koji su tu trenutno.
 b) da izbaci spisak clanova koji ce danas biti tu
 c) da ima pretragu po imenu i/ili prezimenu da se dobije ID clana
-d) da kada clan pozove i hoce da zakaze da odredi
+d1) da kada clan pozove i hoce da zakaze da odredi
 da li uopste danas moze da dodje (da li ima slobodnih perioda) i koliko max moze da ostane.
-c.1) kada se clanu kaze koliko max moze da ostane, on moze da 
+d2) kada se clanu kaze koliko max moze da ostane, on moze da
 zakaze i kraci termin od toga.
 
 Tvoj projekat treba da bude organizovan u module koristeci Maven.

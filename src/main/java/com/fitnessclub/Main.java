@@ -29,7 +29,6 @@ public class Main {
         Member m = new Member();
 
         switch (n) {
-
             case 1:
                 showMembersThatAreCurrentlyInFitnessClub(resultPrinter);
                 break;
@@ -38,8 +37,17 @@ public class Main {
                 break;
             case 3:
                 searchFitnessClubByMember(m);
-
         }
+    }
+
+    //da kada clan pozove i hoce da zakaze da odredi da li uopste danas moze da dodje (da li ima slobodnih perioda)
+    // i koliko max moze da ostane
+    private static void sh(ResultPrinter resultPrinter) {
+
+        Member member = new Member();
+
+        Scheduler scheduler = new Scheduler();
+
     }
 
     private static void showMembersThatAreCurrentlyInFitnessClub(ResultPrinter resultPrinter) {

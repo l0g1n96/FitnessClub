@@ -8,33 +8,54 @@ import java.util.Map;
 
 public class FitnessClub {
 
-    Map<LocalDate, Scheduler> schedulerMap;
+    private Map<LocalDate, Scheduler> schedulerMap;
 
     public FitnessClub() {
         this.schedulerMap = new HashMap<>();
     }
 
-    public Map<LocalDate, Scheduler> getSchedulerMap() {
+    Map<LocalDate, Scheduler> getSchedulerMap() {
         return schedulerMap;
     }
 
-    public void register(Member member, LocalDate date, int[] hours) {
-        Scheduler scheduler = schedulerMap.computeIfAbsent(date, d -> new Scheduler());
+    /*
+    boolean register(Member member, LocalDate date, int[] hours) {
+
+        boolean check;
+
+        //Scheduler scheduler = schedulerMap.computeIfAbsent(date, d -> new Scheduler());
+        check = schedulerMap.containsKey(date);
+
+        Scheduler scheduler = schedulerMap.get(date);
         scheduler.reserve(member, hours);
+
+        return check;
+    }
+    */
+
+    boolean[] register(Member member, LocalDate date, int[] hours){
+
+        boolean[] freeTime = new boolean[12];
+
+
+
+        return freeTime;
     }
 
-    public void unregister(Member member, LocalDate date, int[] hours) {
+    boolean unregister(Member member, LocalDate date, int[] hours) {
+
+        boolean check;
 
         if (member == null || hours.length == 0 || hours.length > 3) {
             throw new IllegalArgumentException("No member");
         }
 
-        if (!schedulerMap.containsKey(date)) {
-            return;
-        }
+        check = schedulerMap.containsKey(date);
 
         Scheduler scheduler = schedulerMap.get(date);
         scheduler.deleteReservation(member, hours);
+
+        return check;
     }
 
     @Override

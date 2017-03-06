@@ -21,20 +21,9 @@ public class Scheduler {
         return scheduledMembers;
     }
 
-    public void searchMembers(Member member) {
+    boolean[] reserve(Member member, int[] hours) {
 
-        for (Set<Member> scheduledMember : scheduledMembers) {
-            if (scheduledMember.contains(member)) {
-                System.out.println("Member founded - ID:");
-                System.out.println(member.getId());
-            } else {
-                System.out.println("Not found");
-                break;
-            }
-        }
-    }
-
-    void reserve(Member member, int[] hours) {
+        boolean[] freeTime = new boolean[WORKING_HOURS];
 
         if (member == null || hours.length == 0 || hours.length > 3) {
             throw new IllegalArgumentException("No members, or you tried to reserve more than 3 hours");
@@ -45,10 +34,13 @@ public class Scheduler {
                 throw new IllegalArgumentException("Fitness club is not working!");
             }
 
-            if (scheduledMembers[hour].size() < MAX_CAPACITY) {
+            if (scheduledMembers[hour].size() < MAX_CAPACITY && scheduledMembers[hour].isEmpty()) {
                 scheduledMembers[hour].add(member);
+                freeTime[hour] = true;
             }
         }
+
+        return freeTime;
     }
 
     void deleteReservation(Member member, int[] hours) {

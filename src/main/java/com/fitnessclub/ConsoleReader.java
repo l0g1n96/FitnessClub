@@ -25,8 +25,6 @@ public class ConsoleReader implements InputDataReader {
             throw new Exception("Option not in range 1 - 3");
         }
 
-        FitnessInput fitnessInput = new FitnessInput(optionNumber);
-
-        return fitnessInput;
+        return new FitnessInput(optionNumber);
     }
 }
