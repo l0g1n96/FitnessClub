@@ -44,10 +44,6 @@ public class Main {
     // i koliko max moze da ostane
     private static void sh(ResultPrinter resultPrinter) {
 
-        Member member = new Member();
-
-        Scheduler scheduler = new Scheduler();
-
     }
 
     private static void showMembersThatAreCurrentlyInFitnessClub(ResultPrinter resultPrinter) {

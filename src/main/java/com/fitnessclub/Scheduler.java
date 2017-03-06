@@ -10,6 +10,7 @@ public class Scheduler {
 
     private static final int WORKING_HOURS = 12;
     private static final int MAX_CAPACITY = 16;
+    private static final int MAX_BOOKED_HOURS = 3;
 
     private Set<Member>[] scheduledMembers;
 
@@ -22,10 +23,19 @@ public class Scheduler {
     }
 
     boolean[] reserve(Member member, int[] hours) {
-
         boolean[] freeTime = new boolean[WORKING_HOURS];
 
-        if (member == null || hours.length == 0 || hours.length > 3) {
+        int currentMaxookedHours = MAX_BOOKED_HOURS;
+        for (Set<Member> memberSet : scheduledMembers) {
+            if (memberSet.contains(member)) {
+                --currentMaxookedHours;
+                if(currentMaxookedHours < 1) {
+                    return freeTime;
+                }
+            }
+        }
+
+        if (member == null || hours.length == 0 || hours.length > currentMaxookedHours) {
             throw new IllegalArgumentException("No members, or you tried to reserve more than 3 hours");
         }
 

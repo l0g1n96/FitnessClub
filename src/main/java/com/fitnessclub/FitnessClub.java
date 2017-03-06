@@ -39,10 +39,10 @@ public class FitnessClub {
         Scheduler scheduler = schedulerMap.get(date);
         boolean[] freeTime = scheduler.reserve(member, hours);
 
-        if(!check){
+        if(check){
             throw new Exception("The scheduler map doesn't contain that date");
         }
-        
+
         return freeTime;
     }
 
