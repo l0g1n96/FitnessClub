@@ -13,11 +13,11 @@ public class Scheduler {
 
     private Set<Member>[] scheduledMembers;
 
-    public Scheduler() {
+    Scheduler() {
         constructArrayOfLists();
     }
 
-    public Set<Member>[] getScheduledMembers() {
+    Set<Member>[] getScheduledMembers() {
         return scheduledMembers;
     }
 

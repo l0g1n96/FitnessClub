@@ -33,12 +33,16 @@ public class FitnessClub {
     }
     */
 
-    boolean[] register(Member member, LocalDate date, int[] hours){
+    boolean[] register(Member member, LocalDate date, int[] hours) throws Exception {
 
-        boolean[] freeTime = new boolean[12];
+        boolean check = schedulerMap.containsKey(date);
+        Scheduler scheduler = schedulerMap.get(date);
+        boolean[] freeTime = scheduler.reserve(member, hours);
 
-
-
+        if(!check){
+            throw new Exception("The scheduler map doesn't contain that date");
+        }
+        
         return freeTime;
     }
 
