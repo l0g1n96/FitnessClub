@@ -23,17 +23,9 @@ public class Scheduler {
     }
 
     boolean[] reserve(Member member, int[] hours) {
-        boolean[] freeTime = new boolean[WORKING_HOURS];
 
+        boolean[] freeTime = new boolean[WORKING_HOURS];
         int currentMaxookedHours = MAX_BOOKED_HOURS;
-        for (Set<Member> memberSet : scheduledMembers) {
-            if (memberSet.contains(member)) {
-                --currentMaxookedHours;
-                if(currentMaxookedHours < 1) {
-                    return freeTime;
-                }
-            }
-        }
 
         if (member == null || hours.length == 0 || hours.length > currentMaxookedHours) {
             throw new IllegalArgumentException("No members, or you tried to reserve more than 3 hours");
@@ -44,10 +36,31 @@ public class Scheduler {
                 throw new IllegalArgumentException("Fitness club is not working!");
             }
 
-            if (scheduledMembers[hour].size() < MAX_CAPACITY && scheduledMembers[hour].isEmpty()) {
+            for (Set<Member> memberSet : scheduledMembers) {
+                if (memberSet.contains(member)) {
+                    --currentMaxookedHours;
+                    if (currentMaxookedHours < 1) {
+                        return freeTime;
+                    }
+                }
+            }
+
+
+            if (scheduledMembers[hour].size() < MAX_CAPACITY || scheduledMembers[hour].isEmpty()) {
                 scheduledMembers[hour].add(member);
                 freeTime[hour] = true;
             }
+        }
+
+        return freeTime;
+    }
+
+    boolean[] findFreeSlots() {
+
+        boolean[] freeTime = new boolean[WORKING_HOURS];
+
+        for (int i = 0; i < scheduledMembers.length; i++) {
+            freeTime[i] = scheduledMembers[i].size() < MAX_CAPACITY;
         }
 
         return freeTime;

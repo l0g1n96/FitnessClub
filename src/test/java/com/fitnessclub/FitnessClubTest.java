@@ -9,7 +9,7 @@ import java.util.Date;
 public class FitnessClubTest {
 
     @Test(expected = IllegalArgumentException.class)
-    public void registerForAfter12Hours() {
+    public void registerForAfter12Hours() throws Exception {
 
         Member m = new Member("Marko", "Devic", 12345);
         FitnessClub fitnessClub = new FitnessClub();
@@ -18,7 +18,7 @@ public class FitnessClubTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void registerForNoMember() {
+    public void registerForNoMember() throws Exception{
 
         Member m = null;
         FitnessClub fitnessClub = new FitnessClub();
@@ -27,7 +27,7 @@ public class FitnessClubTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void registerForEmptyHours() {
+    public void registerForEmptyHours() throws Exception{
 
         Member m = new Member("Marko", "Devic", 12345);
         FitnessClub fitnessClub = new FitnessClub();
@@ -37,7 +37,7 @@ public class FitnessClubTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void registerTestForMoreThanThreeHours() {
+    public void registerTestForMoreThanThreeHours() throws Exception{
 
         Member m = new Member("Marko", "Devic", 12345);
         FitnessClub fitnessClub = new FitnessClub();

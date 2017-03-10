@@ -24,7 +24,7 @@ public class Main {
 
     }
 
-    public static void doWork(FitnessInput fitnessInput, ResultPrinter resultPrinter) {
+    static void doWork(FitnessInput fitnessInput, ResultPrinter resultPrinter) {
         int n = fitnessInput.getOptionNumber();
         Member m = new Member();
 
@@ -37,13 +37,8 @@ public class Main {
                 break;
             case 3:
                 searchFitnessClubByMember(m);
+                break;
         }
-    }
-
-    //da kada clan pozove i hoce da zakaze da odredi da li uopste danas moze da dodje (da li ima slobodnih perioda)
-    // i koliko max moze da ostane
-    private static void sh(ResultPrinter resultPrinter) {
-
     }
 
     private static void showMembersThatAreCurrentlyInFitnessClub(ResultPrinter resultPrinter) {
@@ -69,4 +64,5 @@ public class Main {
 
         return n;
     }
+
 }
