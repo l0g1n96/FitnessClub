@@ -1,4 +1,4 @@
-package com.fitnessclub;
+package com.fitnessclub.fitnessMain;
 
 import com.fitnessclub.dto.Member;
 
@@ -18,7 +18,7 @@ public class FitnessClub {
         return schedulerMap;
     }
 
-    boolean[] register(Member member, LocalDate date, int[] hours) throws Exception {
+    public boolean[] register(Member member, LocalDate date, int[] hours) throws Exception {
 
         if (member == null || hours.length == 0 || hours.length > 3) {
             throw new IllegalArgumentException("No member");
@@ -41,7 +41,7 @@ public class FitnessClub {
         return freeTime;
     }
 
-    boolean unregister(Member member, LocalDate date, int[] hours) {
+    public boolean unregister(Member member, LocalDate date, int[] hours) {
 
         boolean check;
 

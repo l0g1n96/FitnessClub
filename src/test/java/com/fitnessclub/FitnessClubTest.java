@@ -1,6 +1,7 @@
 package com.fitnessclub;
 
 import com.fitnessclub.dto.Member;
+import com.fitnessclub.fitnessMain.FitnessClub;
 import org.junit.Test;
 
 import java.time.LocalDate;

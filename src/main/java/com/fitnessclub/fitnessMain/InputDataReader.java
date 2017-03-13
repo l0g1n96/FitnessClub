@@ -1,4 +1,4 @@
-package com.fitnessclub;
+package com.fitnessclub.fitnessMain;
 
 import com.fitnessclub.dto.FitnessInput;
 

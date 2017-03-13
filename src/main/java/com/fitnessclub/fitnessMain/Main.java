@@ -1,5 +1,7 @@
-package com.fitnessclub;
+package com.fitnessclub.fitnessMain;
 
+import com.fitnessclub.console.ConsolePrinter;
+import com.fitnessclub.console.ConsoleReader;
 import com.fitnessclub.dto.FitnessInput;
 import com.fitnessclub.dto.Member;
 

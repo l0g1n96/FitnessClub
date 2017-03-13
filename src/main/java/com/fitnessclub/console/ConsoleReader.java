@@ -1,5 +1,6 @@
-package com.fitnessclub;
+package com.fitnessclub.console;
 
+import com.fitnessclub.fitnessMain.InputDataReader;
 import com.fitnessclub.dto.FitnessInput;
 
 import java.util.Scanner;

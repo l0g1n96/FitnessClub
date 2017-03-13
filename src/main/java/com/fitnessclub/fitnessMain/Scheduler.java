@@ -1,4 +1,4 @@
-package com.fitnessclub;
+package com.fitnessclub.fitnessMain;
 
 import com.fitnessclub.dto.Member;
 
@@ -14,15 +14,15 @@ public class Scheduler {
 
     private Set<Member>[] scheduledMembers;
 
-    Scheduler() {
+    public Scheduler() {
         constructArrayOfLists();
     }
 
-    Set<Member>[] getScheduledMembers() {
+    public Set<Member>[] getScheduledMembers() {
         return scheduledMembers;
     }
 
-    boolean[] reserve(Member member, int[] hours) {
+    public boolean[] reserve(Member member, int[] hours) {
 
         boolean[] freeTime = new boolean[WORKING_HOURS];
         int currentMaxBookedHours = MAX_BOOKED_HOURS;
@@ -55,7 +55,7 @@ public class Scheduler {
         return freeTime;
     }
 
-    boolean[] findFreeSlots() {
+    public boolean[] findFreeSlots() {
 
         boolean[] freeTime = new boolean[WORKING_HOURS];
 
@@ -66,7 +66,7 @@ public class Scheduler {
         return freeTime;
     }
 
-    void deleteReservation(Member member, int[] hours) {
+    public void deleteReservation(Member member, int[] hours) {
 
         if (member == null || hours.length == 0 || hours.length > 3) {
             throw new IllegalArgumentException("Member not initialized or reservation is bigger than 3 hours");
