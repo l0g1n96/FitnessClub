@@ -18,21 +18,6 @@ public class FitnessClub {
         return schedulerMap;
     }
 
-    /*
-    boolean register(Member member, LocalDate date, int[] hours) {
-
-        boolean check;
-
-        //Scheduler scheduler = schedulerMap.computeIfAbsent(date, d -> new Scheduler());
-        check = schedulerMap.containsKey(date);
-
-        Scheduler scheduler = schedulerMap.get(date);
-        scheduler.reserve(member, hours);
-
-        return check;
-    }
-    */
-
     boolean[] register(Member member, LocalDate date, int[] hours) throws Exception {
 
         if (member == null || hours.length == 0 || hours.length > 3) {

@@ -5,6 +5,7 @@ import com.fitnessclub.dto.Member;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Scanner;
 import java.util.Set;
 
 public class Main {
@@ -14,19 +15,16 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         InputDataReader consoleReader = new ConsoleReader();
-
         ResultPrinter resultPrinter = new ConsolePrinter();
 
-        FitnessClub fitnessClub = new FitnessClub();
 
         FitnessInput inputData = consoleReader.read();
         doWork(inputData, resultPrinter);
 
     }
 
-    static void doWork(FitnessInput fitnessInput, ResultPrinter resultPrinter) {
+    private static void doWork(FitnessInput fitnessInput, ResultPrinter resultPrinter) {
         int n = fitnessInput.getOptionNumber();
-        Member m = new Member();
 
         switch (n) {
             case 1:
@@ -36,7 +34,7 @@ public class Main {
                 showMembersThatAreTodayInFitnessClub(resultPrinter);
                 break;
             case 3:
-                searchFitnessClubByMember(m);
+                searchFitnessClubByMember();
                 break;
         }
     }
@@ -52,16 +50,25 @@ public class Main {
         resultPrinter.print(scheduler.toString());
     }
 
-    private static int searchFitnessClubByMember(Member member) {
+    private static int searchFitnessClubByMember() {
+
         int n = 0;
+        Scanner s = new Scanner(System.in);
         Scheduler scheduler = new Scheduler();
 
-        for (Set<Member> m : scheduler.getScheduledMembers()) {
-            if (m.contains(member)) {
-                n += member.getId();
+        System.out.println("Type a lastname you want to search");
+        String lastName = s.nextLine();
+
+        for (Set<Member> memberSet : scheduler.getScheduledMembers()) {
+            for (Member member : memberSet) {
+                if (member.getLastName().toLowerCase().equals(lastName.toLowerCase())) {
+                    n = member.getId();
+                    break;
+                }
             }
         }
 
+        System.out.println(n);
         return n;
     }
 
