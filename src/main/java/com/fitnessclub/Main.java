@@ -5,6 +5,8 @@ import com.fitnessclub.dto.Member;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -16,7 +18,6 @@ public class Main {
 
         InputDataReader consoleReader = new ConsoleReader();
         ResultPrinter resultPrinter = new ConsolePrinter();
-
 
         FitnessInput inputData = consoleReader.read();
         doWork(inputData, resultPrinter);
@@ -36,6 +37,7 @@ public class Main {
             case 3:
                 searchFitnessClubByMember();
                 break;
+            case 4:
         }
     }
 
@@ -50,26 +52,40 @@ public class Main {
         resultPrinter.print(scheduler.toString());
     }
 
-    private static int searchFitnessClubByMember() {
+    private static void searchFitnessClubByMember() {
 
-        int n = 0;
+        int id = -1;
         Scanner s = new Scanner(System.in);
-        Scheduler scheduler = new Scheduler();
 
         System.out.println("Type a lastname you want to search");
         String lastName = s.nextLine();
 
-        for (Set<Member> memberSet : scheduler.getScheduledMembers()) {
-            for (Member member : memberSet) {
-                if (member.getLastName().toLowerCase().equals(lastName.toLowerCase())) {
-                    n = member.getId();
+        Map<LocalDate, Scheduler> schedulerMap = fitnessClub.getSchedulerMap();
+        for (Map.Entry<LocalDate, Scheduler> schedulerElement : schedulerMap.entrySet()) {
+            for (Set<Member> memberSet : schedulerElement.getValue().getScheduledMembers()) {
+                Optional<Member> memberOptional = memberSet.stream()
+                        .filter(m -> m.getLastName().toLowerCase().equals(lastName.toLowerCase()))
+                        .findFirst();
+
+                if (memberOptional.isPresent()) {
+                    id = memberOptional.get().getId();
                     break;
                 }
             }
+
+            if (id != -1) {
+                break;
+            }
         }
 
-        System.out.println(n);
-        return n;
+        System.out.println(id);
     }
 
+
+    //TODO: Imam sve sto mi je potrebno za pravljenje case 4, freeSlots[] metoda, samo trebam da smislim logiku
+    private static void reservationForCaseFour() {
+
+
+
+    }
 }
