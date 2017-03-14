@@ -20,6 +20,7 @@ public class ConsoleReader implements InputDataReader {
         System.out.println("4: Registration and Reservation");
         System.out.println("0: Exit");
         System.out.println("====================");
+        System.out.println();
 
         System.out.println("Choose an option by number:");
         int optionNumber = s.nextInt();

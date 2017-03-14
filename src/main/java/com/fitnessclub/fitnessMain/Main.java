@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class Main {
 
-    public static FitnessClub fitnessClub = new FitnessClub();
+    private static FitnessClub fitnessClub = new FitnessClub();
 
     public static void main(String[] args) throws Exception {
 
@@ -32,6 +32,7 @@ public class Main {
     }
 
     private static void doWork(FitnessInput fitnessInput, ResultPrinter resultPrinter) throws Exception {
+
         int n = fitnessInput.getOptionNumber();
 
         switch (n) {
@@ -47,24 +48,30 @@ public class Main {
             case 4:
                 reservationForCaseFour();
                 break;
-
         }
     }
 
-    public static void showMembersThatAreCurrentlyInFitnessClub(ResultPrinter resultPrinter) {
+    private static void showMembersThatAreCurrentlyInFitnessClub(ResultPrinter resultPrinter) {
         Scheduler scheduler = fitnessClub.getSchedulerMap().get(LocalDate.now());
-        if(scheduler == null) {
+
+        if (scheduler == null) {
             System.out.println("No members!");
             return;
         }
 
         int hour = LocalDateTime.now().getHour();
+
+        if (hour >= 13 || hour <= 24) {
+            hour -= 12;
+        }
+
         resultPrinter.print(scheduler.getScheduledMembers()[hour].toString());
     }
 
     private static void showMembersThatAreTodayInFitnessClub(ResultPrinter resultPrinter) {
         Scheduler scheduler = fitnessClub.getSchedulerMap().get(LocalDate.now());
-        if(scheduler == null) {
+
+        if (scheduler == null) {
             System.out.println("No members!");
             return;
         }
@@ -85,7 +92,7 @@ public class Main {
                         .findFirst();
 
                 if (memberOptional.isPresent()) {
-                    System.out.println("Id: " + memberOptional.get().getId());
+                    System.out.println("ID: " + memberOptional.get().getId());
                     return;
                 }
             }
@@ -106,13 +113,21 @@ public class Main {
         System.out.println("Enter your id");
         int id = s.nextInt();
         System.out.println("=====Finished=====");
+        System.out.println();
 
         Member member = new Member(name, lastName, id);
 
+        System.out.println();
         System.out.println("=====Reservation=====");
 
         System.out.println("How many hours you want to reserve? (>0 && <4)");
         int h = s.nextInt();
+
+        if (h < 0 || h > 3) {
+            System.out.println("Must be 1-3h max");
+            return;
+        }
+
         int[] hours = new int[3];
 
         for (int i = 0; i < h; i++) {
@@ -126,10 +141,30 @@ public class Main {
         LocalDate localDate = LocalDate.parse(date);
 
         System.out.println("=====Finished reservation=====");
+        System.out.println();
 
-        fitnessClub.register(member, localDate, hours);
+        boolean[] registeredHours = fitnessClub.register(member, localDate, hours);
 
+        Scheduler scheduler = fitnessClub.getSchedulerMap().get(localDate);
+
+        if (scheduler == null) {
+            System.out.println("No members for this date");
+            return;
+        }
+
+        boolean[] actual = scheduler.findFreeSlots();
+
+        for (int i = 0; i < registeredHours.length; i++) {
+            if (!registeredHours[i]) {
+                System.out.println("You can't book fitness club for " + hours[i] + " hour");
+            }
+        }
+
+        System.out.println("You can reserve for: ");
+        for (int i = 0; i < actual.length; i++) {
+            if (actual[i]) {
+                System.out.print(i + " ");
+            }
+        }
     }
-
-
 }

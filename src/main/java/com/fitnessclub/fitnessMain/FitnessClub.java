@@ -8,6 +8,9 @@ import java.util.Map;
 
 public class FitnessClub {
 
+    private static final int BEGINING_HOUR = 8;
+    private static final int ENDING_HOUR = 20;
+
     private Map<LocalDate, Scheduler> schedulerMap;
 
     public FitnessClub() {
@@ -30,15 +33,9 @@ public class FitnessClub {
             }
         }
 
-        boolean check = schedulerMap.containsKey(date);
         Scheduler scheduler = schedulerMap.computeIfAbsent(date, s -> new Scheduler());
-        boolean[] freeTime = scheduler.reserve(member, hours);
 
-        if (check) {
-            throw new Exception("The scheduler map doesn't contain that date");
-        }
-
-        return freeTime;
+        return scheduler.reserve(member, hours);
     }
 
     public boolean unregister(Member member, LocalDate date, int[] hours) {

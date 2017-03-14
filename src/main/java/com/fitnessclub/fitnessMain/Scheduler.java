@@ -45,7 +45,6 @@ public class Scheduler {
                 }
             }
 
-
             if (scheduledMembers[hour].size() < MAX_CAPACITY || scheduledMembers[hour].isEmpty()) {
                 scheduledMembers[hour].add(member);
                 freeTime[hour] = true;
