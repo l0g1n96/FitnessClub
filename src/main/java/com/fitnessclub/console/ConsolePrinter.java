@@ -1,6 +1,6 @@
 package com.fitnessclub.console;
 
-import com.fitnessclub.ResultPrinter;
+import com.fitnessclub.fitnessMain.ResultPrinter;
 
 public class ConsolePrinter implements ResultPrinter {
 

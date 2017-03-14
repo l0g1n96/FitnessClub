@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e85b1131-c57d-4304-9541-8079741ab8e5" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/fitnessclub/ConsolePrinter.java" afterPath="$PROJECT_DIR$/src/main/java/com/fitnessclub/console/ConsolePrinter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/fitnessclub/ConsoleReader.java" afterPath="$PROJECT_DIR$/src/main/java/com/fitnessclub/console/ConsoleReader.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/fitnessclub/FitnessClub.java" afterPath="$PROJECT_DIR$/src/main/java/com/fitnessclub/fitnessMain/FitnessClub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/fitnessclub/Main.java" afterPath="$PROJECT_DIR$/src/main/java/com/fitnessclub/fitnessMain/Main.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/fitnessclub/Scheduler.java" afterPath="$PROJECT_DIR$/src/main/java/com/fitnessclub/fitnessMain/Scheduler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/fitnessclub/fitnessMain/MainTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/fitnessclub/InputDataReader.java" afterPath="$PROJECT_DIR$/src/main/java/com/fitnessclub/fitnessMain/InputDataReader.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/fitnessclub/ResultPrinter.java" afterPath="$PROJECT_DIR$/src/main/java/com/fitnessclub/fitnessMain/ResultPrinter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/fitnessclub/FitnessClubTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/fitnessclub/FitnessClubTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/fitnessclub/SchedulerTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/fitnessclub/SchedulerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fitnessclub/console/ConsolePrinter.java" afterPath="$PROJECT_DIR$/src/main/java/com/fitnessclub/console/ConsolePrinter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fitnessclub/console/ConsoleReader.java" afterPath="$PROJECT_DIR$/src/main/java/com/fitnessclub/console/ConsoleReader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fitnessclub/fitnessMain/Main.java" afterPath="$PROJECT_DIR$/src/main/java/com/fitnessclub/fitnessMain/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -29,12 +28,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fitnessclub/fitnessMain/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="110" column="37" lean-forward="true" selection-start-line="110" selection-start-column="37" selection-end-line="110" selection-end-column="37" />
-              <folding />
+            <state relative-caret-position="945">
+              <caret line="129" column="55" lean-forward="true" selection-start-line="129" selection-start-column="55" selection-end-line="129" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -42,18 +43,18 @@
       <file leaf-file-name="Scheduler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fitnessclub/fitnessMain/Scheduler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="40" column="31" lean-forward="false" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
+            <state relative-caret-position="248">
+              <caret line="51" column="13" lean-forward="true" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FitnessClub.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FitnessClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fitnessclub/fitnessMain/FitnessClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="37" column="79" lean-forward="true" selection-start-line="37" selection-start-column="79" selection-end-line="37" selection-end-column="79" />
+            <state relative-caret-position="510">
+              <caret line="38" column="9" lean-forward="true" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -65,8 +66,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -79,8 +80,8 @@
       <find>member</find>
       <find>doWork</find>
       <find>get</find>
-      <find>Map</find>
       <find>put</find>
+      <find>Map</find>
     </findStrings>
     <replaceStrings>
       <replace>DOWORK</replace>
@@ -120,9 +121,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/fitnessclub/FitnessClub.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fitnessclub/Scheduler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fitnessclub/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fitnessclub/console/ConsoleReader.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fitnessclub/fitnessMain/FitnessClub.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fitnessclub/console/ConsolePrinter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fitnessclub/console/ConsoleReader.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fitnessclub/fitnessMain/Main.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/fitnessclub/fitnessMain/MainTest.java" />
       </list>
     </option>
   </component>
@@ -253,6 +256,10 @@
               <option name="myItemId" value="fitnessclub" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fitnessMain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -277,10 +284,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="fitnessclub" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fitnessMain" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -328,6 +331,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.fitnessclub.fitnessMain" />
       <recent name="com.fitnessclub" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -387,32 +391,6 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="SchedulerTest.reservationForOneMember" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.fitnessclub.fitnessMain.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="fitnessclub" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.fitnessclub" />
-      <option name="MAIN_CLASS_NAME" value="com.fitnessclub.SchedulerTest" />
-      <option name="METHOD_NAME" value="reservationForOneMember" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="false" name="SchedulerTest.reservationForTwoMembers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -457,6 +435,32 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="fitnessclub" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="MainTest.test01" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.fitnessclub.fitnessMain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="fitnessclub" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.fitnessclub.fitnessMain" />
+      <option name="MAIN_CLASS_NAME" value="com.fitnessclub.fitnessMain.MainTest" />
+      <option name="METHOD_NAME" value="test01" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -666,17 +670,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.SchedulerTest" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.FitnessClubTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.SchedulerTest.reservationForOneMember" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.SchedulerTest.reservationForTwoMembers" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Main" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.SchedulerTest.reservationForTwoMembers" />
+      <item index="3" class="java.lang.String" itemvalue="Application.Main" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.MainTest.test01" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.Main" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.FitnessClubTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.SchedulerTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.SchedulerTest.reservationForTwoMembers" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.SchedulerTest.reservationForOneMember" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.MainTest.test01" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.FitnessClubTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.SchedulerTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.SchedulerTest.reservationForTwoMembers" />
       </list>
     </recent_temporary>
   </component>
@@ -694,20 +698,20 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FitnessClubTest - 2017.03.10 at 14h 18m 24s.xml">
-      <configuration name="FitnessClubTest" configurationId="JUnit" />
+    <history-entry file="MainTest_test01 - 2017.03.14 at 11h 14m 28s.xml">
+      <configuration name="MainTest.test01" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SchedulerTest - 2017.03.10 at 14h 18m 16s.xml">
-      <configuration name="SchedulerTest" configurationId="JUnit" />
+    <history-entry file="MainTest_test01 - 2017.03.14 at 11h 17m 06s.xml">
+      <configuration name="MainTest.test01" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SchedulerTest_freeSlotsTest - 2017.03.10 at 13h 34m 56s.xml">
-      <configuration name="SchedulerTest.freeSlotsTest" configurationId="JUnit" />
+    <history-entry file="MainTest_test01 - 2017.03.14 at 11h 17m 20s.xml">
+      <configuration name="MainTest.test01" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SchedulerTest_freeSlotsTest - 2017.03.10 at 13h 41m 21s.xml">
-      <configuration name="SchedulerTest.freeSlotsTest" configurationId="JUnit" />
+    <history-entry file="MainTest_test01 - 2017.03.14 at 11h 18m 51s.xml">
+      <configuration name="MainTest.test01" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SchedulerTest_freeSlotsTest - 2017.03.10 at 13h 42m 31s.xml">
-      <configuration name="SchedulerTest.freeSlotsTest" configurationId="JUnit" />
+    <history-entry file="MainTest_test01 - 2017.03.14 at 11h 20m 02s.xml">
+      <configuration name="MainTest.test01" configurationId="JUnit" />
     </history-entry>
     <history-entry file="SchedulerTest_freeSlotsTest - 2017.03.10 at 13h 42m 37s.xml">
       <configuration name="SchedulerTest.freeSlotsTest" configurationId="JUnit" />
@@ -803,16 +807,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fitnessclub/fitnessMain/Scheduler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#2460#2490#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fitnessclub/fitnessMain/FitnessClub.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -835,7 +829,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -861,7 +857,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -887,7 +885,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -913,7 +913,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="19" column="52" lean-forward="true" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -921,7 +923,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1100,14 +1104,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/fitnessclub/FitnessClubTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="55" column="30" lean-forward="false" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/fitnessclub/SchedulerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1163">
@@ -1124,42 +1120,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/fitnessclub/FitnessClubTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="835">
+          <caret line="55" column="30" lean-forward="false" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/fitnessclub/fitnessMain/MainTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fitnessclub/console/ConsolePrinter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="34">
+          <caret line="2" column="49" lean-forward="false" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fitnessclub/console/ConsoleReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="26" column="61" lean-forward="true" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
-          <folding />
+        <state relative-caret-position="170">
+          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fitnessclub/fitnessMain/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="129" column="55" lean-forward="true" selection-start-line="129" selection-start-column="55" selection-end-line="129" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fitnessclub/fitnessMain/Scheduler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="40" column="31" lean-forward="false" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
+        <state relative-caret-position="248">
+          <caret line="51" column="13" lean-forward="true" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fitnessclub/fitnessMain/FitnessClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="37" column="79" lean-forward="true" selection-start-line="37" selection-start-column="79" selection-end-line="37" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fitnessclub/fitnessMain/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="110" column="37" lean-forward="true" selection-start-line="110" selection-start-column="37" selection-end-line="110" selection-end-column="37" />
+        <state relative-caret-position="510">
+          <caret line="38" column="9" lean-forward="true" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
           <folding />
         </state>
       </provider>

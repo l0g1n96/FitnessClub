@@ -1,7 +1,5 @@
 package com.fitnessclub.fitnessMain;
 
-import com.fitnessclub.InputDataReader;
-import com.fitnessclub.ResultPrinter;
 import com.fitnessclub.console.ConsolePrinter;
 import com.fitnessclub.console.ConsoleReader;
 import com.fitnessclub.dto.FitnessInput;
@@ -16,16 +14,21 @@ import java.util.Set;
 
 public class Main {
 
-    private static FitnessClub fitnessClub = new FitnessClub();
+    public static FitnessClub fitnessClub = new FitnessClub();
 
     public static void main(String[] args) throws Exception {
 
         InputDataReader consoleReader = new ConsoleReader();
         ResultPrinter resultPrinter = new ConsolePrinter();
 
-        FitnessInput inputData = consoleReader.read();
-        doWork(inputData, resultPrinter);
+        while (true) {
+            FitnessInput inputData = consoleReader.read();
+            if (inputData.getOptionNumber() == 0) {
+                break;
+            }
 
+            doWork(inputData, resultPrinter);
+        }
     }
 
     private static void doWork(FitnessInput fitnessInput, ResultPrinter resultPrinter) throws Exception {
@@ -44,25 +47,33 @@ public class Main {
             case 4:
                 reservationForCaseFour();
                 break;
+
         }
     }
 
-    private static void showMembersThatAreCurrentlyInFitnessClub(ResultPrinter resultPrinter) {
+    public static void showMembersThatAreCurrentlyInFitnessClub(ResultPrinter resultPrinter) {
         Scheduler scheduler = fitnessClub.getSchedulerMap().get(LocalDate.now());
+        if(scheduler == null) {
+            System.out.println("No members!");
+            return;
+        }
+
         int hour = LocalDateTime.now().getHour();
         resultPrinter.print(scheduler.getScheduledMembers()[hour].toString());
     }
 
     private static void showMembersThatAreTodayInFitnessClub(ResultPrinter resultPrinter) {
         Scheduler scheduler = fitnessClub.getSchedulerMap().get(LocalDate.now());
+        if(scheduler == null) {
+            System.out.println("No members!");
+            return;
+        }
+
         resultPrinter.print(scheduler.toString());
     }
 
     private static void searchFitnessClubByMember() {
-
-        int id = -1;
         Scanner s = new Scanner(System.in);
-
         System.out.println("Type a lastname you want to search");
         String lastName = s.nextLine();
 
@@ -74,17 +85,13 @@ public class Main {
                         .findFirst();
 
                 if (memberOptional.isPresent()) {
-                    id = memberOptional.get().getId();
-                    break;
+                    System.out.println("Id: " + memberOptional.get().getId());
+                    return;
                 }
-            }
-
-            if (id != -1) {
-                break;
             }
         }
 
-        System.out.println(id);
+        System.out.println("No such member!");
     }
 
     private static void reservationForCaseFour() throws Exception {
