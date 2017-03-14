@@ -1,5 +1,9 @@
-package com.fitnessclub;
+package com.fitnessclub.fitnessMain;
 
+import com.fitnessclub.InputDataReader;
+import com.fitnessclub.ResultPrinter;
+import com.fitnessclub.console.ConsolePrinter;
+import com.fitnessclub.console.ConsoleReader;
 import com.fitnessclub.dto.FitnessInput;
 import com.fitnessclub.dto.Member;
 
@@ -24,7 +28,7 @@ public class Main {
 
     }
 
-    private static void doWork(FitnessInput fitnessInput, ResultPrinter resultPrinter) {
+    private static void doWork(FitnessInput fitnessInput, ResultPrinter resultPrinter) throws Exception {
         int n = fitnessInput.getOptionNumber();
 
         switch (n) {
@@ -38,6 +42,8 @@ public class Main {
                 searchFitnessClubByMember();
                 break;
             case 4:
+                reservationForCaseFour();
+                break;
         }
     }
 
@@ -81,11 +87,42 @@ public class Main {
         System.out.println(id);
     }
 
+    private static void reservationForCaseFour() throws Exception {
 
-    //TODO: Imam sve sto mi je potrebno za pravljenje case 4, freeSlots[] metoda, samo trebam da smislim logiku
-    private static void reservationForCaseFour() {
+        Scanner s = new Scanner(System.in);
 
+        System.out.println("=====Registration=====");
+        System.out.println("Enter your name: ");
+        String name = s.nextLine();
+        System.out.println("Enter your lastname: ");
+        String lastName = s.nextLine();
+        System.out.println("Enter your id");
+        int id = s.nextInt();
+        System.out.println("=====Finished=====");
 
+        Member member = new Member(name, lastName, id);
+
+        System.out.println("=====Reservation=====");
+
+        System.out.println("How many hours you want to reserve? (>0 && <4)");
+        int h = s.nextInt();
+        int[] hours = new int[3];
+
+        for (int i = 0; i < h; i++) {
+            System.out.println("Type the " + (i + 1) + " hour");
+            hours[i] = s.nextInt();
+        }
+
+        System.out.println("Enter date you want to reserve: (format: YYYY-MM-DD)");
+        String date = s.next();
+
+        LocalDate localDate = LocalDate.parse(date);
+
+        System.out.println("=====Finished reservation=====");
+
+        fitnessClub.register(member, localDate, hours);
 
     }
+
+
 }

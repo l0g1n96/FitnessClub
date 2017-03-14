@@ -1,6 +1,7 @@
 package com.fitnessclub;
 
 import com.fitnessclub.dto.Member;
+import com.fitnessclub.fitnessMain.Scheduler;
 import org.junit.Assert;
 import org.junit.Test;
 
