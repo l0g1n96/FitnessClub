@@ -7,10 +7,7 @@ import com.fitnessclub.dto.Member;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
 
@@ -128,7 +125,7 @@ public class Main {
             return;
         }
 
-        int[] hours = new int[3];
+        int[] hours = new int[h];
 
         for (int i = 0; i < h; i++) {
             System.out.println("Type the " + (i + 1) + " hour: (08 - 19)");
