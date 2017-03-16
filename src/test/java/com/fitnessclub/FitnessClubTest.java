@@ -14,7 +14,7 @@ public class FitnessClubTest {
 
         Member m = new Member("Marko", "Devic", 12345);
         FitnessClub fitnessClub = new FitnessClub();
-        fitnessClub.register(m, LocalDate.now(), new int[]{13});
+        fitnessClub.register(m, LocalDate.now(), new int[]{21});
 
     }
 

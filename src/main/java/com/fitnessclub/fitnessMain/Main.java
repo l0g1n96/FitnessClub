@@ -131,7 +131,7 @@ public class Main {
         int[] hours = new int[3];
 
         for (int i = 0; i < h; i++) {
-            System.out.println("Type the " + (i + 1) + " hour");
+            System.out.println("Type the " + (i + 1) + " hour: (08 - 19)");
             hours[i] = s.nextInt();
         }
 
@@ -155,15 +155,16 @@ public class Main {
         boolean[] actual = scheduler.findFreeSlots();
 
         for (int i = 0; i < registeredHours.length; i++) {
-            if (!registeredHours[i]) {
+            if (registeredHours[i]) {
                 System.out.println("You can't book fitness club for " + hours[i] + " hour");
-            }
-        }
 
-        System.out.println("You can reserve for: ");
-        for (int i = 0; i < actual.length; i++) {
-            if (actual[i]) {
-                System.out.print(i + " ");
+                System.out.println("You can reserve for: ");
+
+                for (int j = 0; j < actual.length; j++) {
+                    if (actual[i]) {
+                        System.out.print(i + " ");
+                    }
+                }
             }
         }
     }

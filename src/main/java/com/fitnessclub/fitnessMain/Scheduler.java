@@ -11,6 +11,8 @@ public class Scheduler {
     private static final int WORKING_HOURS = 12;
     private static final int MAX_CAPACITY = 16;
     private static final int MAX_BOOKED_HOURS = 3;
+    private static final int BEGINNING_HOUR = 8;
+    private static final int ENDING_HOUR = 20;
 
     private Set<Member>[] scheduledMembers;
 
@@ -32,7 +34,7 @@ public class Scheduler {
         }
 
         for (int hour : hours) {
-            if (hour < 0 || hour > WORKING_HOURS) {
+            if (hour < 0 || hour > ENDING_HOUR) {
                 throw new IllegalArgumentException("Fitness club is not working!");
             }
 
@@ -45,9 +47,12 @@ public class Scheduler {
                 }
             }
 
-            if (scheduledMembers[hour].size() < MAX_CAPACITY || scheduledMembers[hour].isEmpty()) {
-                scheduledMembers[hour].add(member);
-                freeTime[hour] = true;
+            if (scheduledMembers[hour - BEGINNING_HOUR].size() < MAX_CAPACITY) {
+                scheduledMembers[hour - BEGINNING_HOUR].add(member);
+            }
+
+            if (scheduledMembers[hour - BEGINNING_HOUR].size() == 16) {
+                freeTime[hour - BEGINNING_HOUR] = true;
             }
         }
 

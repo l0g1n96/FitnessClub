@@ -20,7 +20,7 @@ public class SchedulerTest {
     public void reservationForOneMember() {
         Member m = new Member("Marko", "Devic", 123);
         Scheduler scheduler = new Scheduler();
-        scheduler.reserve(m, new int[]{1});
+        scheduler.reserve(m, new int[]{9});
 
         Set<Member>[] set = scheduler.getScheduledMembers();
 
@@ -32,8 +32,8 @@ public class SchedulerTest {
         Member marko = new Member("Marko", "Devic", 121);
         Member laza = new Member("Laza", "Lazic", 120);
         Scheduler scheduler = new Scheduler();
-        scheduler.reserve(marko, new int[]{1});
-        scheduler.reserve(laza, new int[]{1});
+        scheduler.reserve(marko, new int[]{9});
+        scheduler.reserve(laza, new int[]{9});
 
         Set<Member>[] set = scheduler.getScheduledMembers();
 
@@ -58,7 +58,7 @@ public class SchedulerTest {
     public void reservationTestForArrayBiggerThan12() {
         Member m = new Member("Marko", "Devic", 12345);
         Scheduler scheduler = new Scheduler();
-        scheduler.reserve(m, new int[]{13, 15});
+        scheduler.reserve(m, new int[]{21, 7});
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -100,23 +100,23 @@ public class SchedulerTest {
     public void freeSlotsTest() throws Exception {
         Scheduler scheduler = new Scheduler();
 
-        scheduler.reserve(new Member("Marko", "Devic", 123), new int[]{1});
-        scheduler.reserve(new Member("Marko", "Markovic", 124), new int[]{1});
-        scheduler.reserve(new Member("Marko", "c", 125), new int[]{1});
-        scheduler.reserve(new Member("Marko", "a", 126), new int[]{1});
-        scheduler.reserve(new Member("Marko", "d", 127), new int[]{1});
-        scheduler.reserve(new Member("Marko", "e", 128), new int[]{1});
-        scheduler.reserve(new Member("Marko", "r", 129), new int[]{1});
-        scheduler.reserve(new Member("Marko", "t", 121), new int[]{1});
-        scheduler.reserve(new Member("Marko", "q", 122), new int[]{1});
-        scheduler.reserve(new Member("Marko", "w", 131), new int[]{1});
-        scheduler.reserve(new Member("Marko", "y", 132), new int[]{1});
-        scheduler.reserve(new Member("Marko", "u", 133), new int[]{1});
-        scheduler.reserve(new Member("Marko", "i", 134), new int[]{1});
-        scheduler.reserve(new Member("Marko", "o", 135), new int[]{1});
-        scheduler.reserve(new Member("Marko", "z", 136), new int[]{1});
-        scheduler.reserve(new Member("Marko", "x", 137), new int[]{1});
-        scheduler.reserve(new Member("Marko", "v", 137), new int[]{1});
+        scheduler.reserve(new Member("Marko", "Devic", 123), new int[]{9});
+        scheduler.reserve(new Member("Marko", "Markovic", 124), new int[]{9});
+        scheduler.reserve(new Member("Marko", "c", 125), new int[]{9});
+        scheduler.reserve(new Member("Marko", "a", 126), new int[]{9});
+        scheduler.reserve(new Member("Marko", "d", 127), new int[]{9});
+        scheduler.reserve(new Member("Marko", "e", 128), new int[]{9});
+        scheduler.reserve(new Member("Marko", "r", 129), new int[]{9});
+        scheduler.reserve(new Member("Marko", "t", 121), new int[]{9});
+        scheduler.reserve(new Member("Marko", "q", 122), new int[]{9});
+        scheduler.reserve(new Member("Marko", "w", 131), new int[]{9});
+        scheduler.reserve(new Member("Marko", "y", 132), new int[]{9});
+        scheduler.reserve(new Member("Marko", "u", 133), new int[]{9});
+        scheduler.reserve(new Member("Marko", "i", 134), new int[]{9});
+        scheduler.reserve(new Member("Marko", "o", 135), new int[]{9});
+        scheduler.reserve(new Member("Marko", "z", 136), new int[]{9});
+        scheduler.reserve(new Member("Marko", "x", 137), new int[]{9});
+        scheduler.reserve(new Member("Marko", "v", 137), new int[]{9});
 
         boolean b[] = scheduler.findFreeSlots();
         boolean a[] = new boolean[]{true,false,true,true,true,true,true,true,true,true,true,true};
