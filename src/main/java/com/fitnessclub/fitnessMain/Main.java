@@ -158,7 +158,7 @@ public class Main {
                 System.out.println("You can reserve for: ");
 
                 for (int j = 0; j < actual.length; j++) {
-                    if (actual[i]) {
+                    if (!actual[i]) {
                         System.out.print(i + " ");
                     }
                 }

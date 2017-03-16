@@ -24,14 +24,6 @@ public class FitnessClub {
             throw new IllegalArgumentException("No member");
         }
 
-        /*
-        for (int hour : hours) {
-            if (hour < BEGINNING_HOUR || hour > ENDING_HOUR) {
-                throw new IllegalArgumentException("Fitness club is not working!");
-            }
-        }
-        */
-
         Scheduler scheduler = schedulerMap.computeIfAbsent(date, s -> new Scheduler());
 
         return scheduler.reserve(member, hours);
