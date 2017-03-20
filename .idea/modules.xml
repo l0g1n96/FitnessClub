@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/console.iml" filepath="$PROJECT_DIR$/console.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core/fitness-core.iml" filepath="$PROJECT_DIR$/core/fitness-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/data/data.iml" filepath="$PROJECT_DIR$/data/data.iml" />
       <module fileurl="file://$PROJECT_DIR$/fitnessclub.iml" filepath="$PROJECT_DIR$/fitnessclub.iml" />
+      <module fileurl="file://$PROJECT_DIR$/view/view.iml" filepath="$PROJECT_DIR$/view/view.iml" />
     </modules>
   </component>
 </project>
