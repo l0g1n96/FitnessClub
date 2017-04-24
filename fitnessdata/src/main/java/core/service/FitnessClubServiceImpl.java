@@ -67,12 +67,12 @@ public class FitnessClubServiceImpl implements FitnessClubService {
         System.out.println("Insert a lastname of member you want to search:");
         String lastname = s.nextLine();
 
-        for(Map.Entry<LocalDate, Scheduler> schedulerEntry : schedulerMap.entrySet()) {
-            for(Set<MemberDTO> memberSet : schedulerEntry.getValue().getScheduledMembers()) {
+        for (Map.Entry<LocalDate, Scheduler> schedulerEntry : schedulerMap.entrySet()) {
+            for (Set<MemberDTO> memberSet : schedulerEntry.getValue().getScheduledMembers()) {
                 Optional<MemberDTO> memberOptional = memberSet.stream()
                         .filter(m -> m.getLastname().toLowerCase().equals(lastname.toLowerCase())).findFirst();
 
-                if(memberOptional.isPresent()) {
+                if (memberOptional.isPresent()) {
                     String name = memberOptional.get().getName();
                     int id = memberOptional.get().getId();
 
@@ -95,24 +95,71 @@ public class FitnessClubServiceImpl implements FitnessClubService {
      */
 
     @Override
-    public int findLongestAvailableToday() {
+    public void findLongestAvailableToday() {
 
-        int longestAvailable = 0;
+        Scanner s = new Scanner(System.in);
 
-        Scheduler scheduler = schedulerMap.get(LocalDate.now());
-        Set<MemberDTO>[] scheduledMembers = scheduler.getScheduledMembers();
+        System.out.println("Insert your name:");
+        String name = s.nextLine();
 
-        for (int i = 0; i < scheduledMembers.length; i++) {
-            if (scheduledMembers[i].size() < 16 && scheduledMembers[i + 1].size() < 16) {
-                longestAvailable++;
+        System.out.println("Insert your lastname:");
+        String lastname = s.nextLine();
+
+        System.out.println("Insert your ID:");
+        int id = s.nextInt();
+
+        MemberDTO member = new MemberDTO(name, lastname, id);
+
+        System.out.println();
+
+        System.out.println("How much hours would you like to reserve? (>0 && 4<)");
+        int h = s.nextInt();
+
+        if (h < 0 || h > 4) {
+            System.out.println("Input error");
+            return;
+        }
+
+        int[] hours = new int[h];
+
+        for (int i = 0; i < h; i++) {
+            System.out.println("Please insert " + (i + 1) + " hour: (08h - 19h)");
+            hours[i] = s.nextInt();
+        }
+
+        System.out.println("Please insert a date you want to reserve: (format: YYYY-MM-DD)");
+        String d = s.next();
+
+        LocalDate date = LocalDate.parse(d);
+
+        System.out.println("=====FINISHED=====");
+        System.out.println();
+
+        boolean[] registerHours = register(member, date, hours);
+
+        Scheduler scheduler = schedulerMap.get(date);
+
+        if (scheduler == null) {
+            System.out.println("No Scheduler!");
+            return;
+        }
+
+        boolean[] freeSlots = scheduler.findFreeSlots();
+
+        for (int i = 0; i < registerHours.length; i++) {
+
+            if (registerHours[i]) {
+                System.out.println("You cannot book for " + i + " slot, it's full!");
+
+                System.out.println("You can book for ");
+
+                for (int j = 0; j < freeSlots.length; j++) {
+                    if (!freeSlots[i]) {
+                        System.out.print("" + i + " hour");
+                    }
+                }
             }
         }
-
-        if (longestAvailable != 0) {
-            return longestAvailable;
-        }
-
-        return -1;
     }
 
     public Map<LocalDate, Scheduler> getSchedulerMap() {

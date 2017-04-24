@@ -119,7 +119,7 @@ public class SchedulerDataImplTest {
         Assert.assertTrue(!set[1].contains(member));
     }
 
-    @Test
+    /*@Test
     public void longestPeriodAvailableTest() {
 
         sData.addToScheduler(new MemberDTO("Marko", "Devic", 123), new int[]{9});
@@ -138,12 +138,14 @@ public class SchedulerDataImplTest {
         sData.addToScheduler(new MemberDTO("Marko", "o", 135), new int[]{9});
         sData.addToScheduler(new MemberDTO("Marko", "z", 136), new int[]{9});
         sData.addToScheduler(new MemberDTO("Marko", "x", 137), new int[]{9});
-        sData.addToScheduler(new MemberDTO("Marko", "v", 137), new int[]{10});
+        sData.addToScheduler(new MemberDTO("Marko", "v", 137), new int[]{9});
 
-        int longestAvailable = sData.longestPeriodAvailable();
+        boolean[] freeSlots = sData.findFreeSlots();
+        boolean[] actual = new boolean[]{false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
 
-        Assert.assertEquals(longestAvailable, 11);
-    }
+
+        Assert.assertEquals(freeSlots, actual);
+    }*/
 
 
 }

@@ -1,7 +1,6 @@
 package com.fitness.consoleapp;
 
 import core.service.FitnessClubServiceImpl;
-import datamanage.MemberDataImpl;
 import dto.FitnessInputDTO;
 
 public class FitnessUI {
@@ -32,7 +31,7 @@ public class FitnessUI {
         switch (n) {
 
             case 3:
-                fitnessClub.searchForMember();
+                System.out.println(fitnessClub.searchForMember());
                 break;
 
             case 4:

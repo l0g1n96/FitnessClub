@@ -3,7 +3,6 @@ package datamanage;
 import dataprocess.SchedulerData;
 import dto.MemberDTO;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -82,22 +81,15 @@ public class Scheduler implements SchedulerData {
     }
 
     @Override
-    public int longestPeriodAvailable() {
+    public boolean[] findFreeSlots() {
 
         boolean[] freeTime = new boolean[WORKING_HOURS];
-        int longestAvailable = 0;
 
         for (int i = 0; i < scheduledMembers.length; i++) {
             freeTime[i] = scheduledMembers[i].size() >= 16;
         }
 
-        for(int i = 0; i < freeTime.length - 1; i++) {
-            if(freeTime[i] && freeTime[i+1]) {
-                longestAvailable++;
-            }
-        }
-
-        return longestAvailable;
+        return freeTime;
     }
 
     public Set<MemberDTO>[] getScheduledMembers() {
