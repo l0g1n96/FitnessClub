@@ -1,4 +1,4 @@
-# com.fitnessclub.model.FitnessClub
+#FitnessClub
 
 ### Tekst zadatka: 
 
