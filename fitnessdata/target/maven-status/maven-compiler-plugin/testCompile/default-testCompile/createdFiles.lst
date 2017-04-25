@@ -1,3 +1,2 @@
-datamanage\MemberDataImplTest.class
-datamanage\TimeframeDataImplTest.class
-datamanage\SchedulerDataImplTest.class
+core\service\DefaultFitnessClubServiceTest.class
+datamanage\FitnessSchedulerTest.class

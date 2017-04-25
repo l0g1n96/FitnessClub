@@ -1,15 +1,15 @@
 package com.fitness.consoleapp;
 
-import core.service.FitnessClubServiceImpl;
+import core.service.DefaultFitnessClubService;
 import dto.FitnessInputDTO;
 
 public class FitnessUI {
 
+    private static DefaultFitnessClubService fitnessClub = new DefaultFitnessClubService();
+
     public static void main(String[] args) {
 
         InputDataReader input = new ConsoleReader();
-        ResultPrinter printer = new ConsolePrinter();
-
 
         while (true) {
             FitnessInputDTO optionNumber = input.read();
@@ -17,18 +17,24 @@ public class FitnessUI {
             if (optionNumber.getOptionNumber() == 0) {
                 break;
             }
-            doWork(optionNumber, printer);
+
+            doWork(optionNumber);
         }
     }
 
-    private static void doWork(FitnessInputDTO input, ResultPrinter printer) {
-        //printer is for first and second case
-
-        FitnessClubServiceImpl fitnessClub = new FitnessClubServiceImpl();
+    private static void doWork(FitnessInputDTO input) {
 
         int n = input.getOptionNumber();
 
         switch (n) {
+
+            case 1:
+                System.out.println(fitnessClub.showMembersInFitnessClubNow());
+                break;
+
+            case 2:
+                System.out.println(fitnessClub.showTodaysMembers());
+                break;
 
             case 3:
                 System.out.println(fitnessClub.searchForMember());

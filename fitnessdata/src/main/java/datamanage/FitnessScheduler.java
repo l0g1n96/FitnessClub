@@ -1,22 +1,23 @@
 package datamanage;
 
-import dataprocess.SchedulerData;
+import dataprocess.Scheduler;
 import dto.MemberDTO;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
-public class Scheduler implements SchedulerData {
+public class FitnessScheduler implements Scheduler {
 
     private static final int WORKING_HOURS = 12;
     private static final int MAX_CAPACITY = 16;
     private static final int MAX_BOOKED_HOURS = 3;
     private static final int BEGINNING_HOUR = 8;
-    private static final int ENDING_HOUR = 20;
+    private static final int ENDING_HOUR = BEGINNING_HOUR + WORKING_HOURS;
 
     private Set<MemberDTO>[] scheduledMembers;
 
-    public Scheduler() {
+    public FitnessScheduler() {
         scheduledMembers = new Set[WORKING_HOURS];
         for (int i = 0; i < scheduledMembers.length; i++) {
             scheduledMembers[i] = new HashSet<>();
@@ -35,13 +36,13 @@ public class Scheduler implements SchedulerData {
 
         for (int hour : hours) {
 
-            if (hour < 0 || hour > ENDING_HOUR) {
+            if (hour < BEGINNING_HOUR || hour > ENDING_HOUR) {
                 throw new IllegalArgumentException("Fitness Club cannot reserve for this hour");
             }
 
             for (Set<MemberDTO> membersSet : scheduledMembers) {
                 if (membersSet.contains(member)) {
-                    currentMaxBookedHours--;
+                    --currentMaxBookedHours;
 
                     if (currentMaxBookedHours < 1) {
                         return freeTime;
@@ -70,7 +71,7 @@ public class Scheduler implements SchedulerData {
 
         for (int hour : hours) {
 
-            if (hour <= 0 || hour > WORKING_HOURS) {
+            if (hour <= BEGINNING_HOUR || hour > ENDING_HOUR) {
                 throw new IllegalArgumentException("Hour is wrong");
             }
 
@@ -92,7 +93,34 @@ public class Scheduler implements SchedulerData {
         return freeTime;
     }
 
-    public Set<MemberDTO>[] getScheduledMembers() {
-        return scheduledMembers;
+    @Override
+    public Set<MemberDTO> getScheduledMembers(int hour) {
+        if (hour <= BEGINNING_HOUR || hour > ENDING_HOUR) {
+            throw new IllegalArgumentException("Hour is wrong");
+        }
+
+        return scheduledMembers[hour - BEGINNING_HOUR];
+    }
+
+    @Override
+    public Set<MemberDTO> getAllScheduledMembers() {
+        Set<MemberDTO> members = new HashSet<>();
+        for (Set<MemberDTO> memberSet : scheduledMembers) {
+            members.addAll(memberSet);
+        }
+        return members;
+    }
+
+    @Override
+    public MemberDTO getMember(String lastname) {
+        for (Set<MemberDTO> memberSet : scheduledMembers) {
+            Optional<MemberDTO> memberOptional = memberSet.stream()
+                    .filter(m -> m.getLastname().toLowerCase().equals(lastname.toLowerCase())).findFirst();
+
+            if (memberOptional.isPresent()) {
+                return memberOptional.get();
+            }
+        }
+        return null;
     }
 }

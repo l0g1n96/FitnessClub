@@ -1,8 +1,4 @@
-dto\Timeframe.class
-dto\SchedulerDTO.class
+dto\FitnessInputDTO.class
 dto\MemberDTO.class
-dataprocess\MemberData.class
-dataprocess\TimeframeData.class
-dataprocess\FitnessClubData.class
-dto\FitnessClub.class
-dataprocess\SchedulerData.class
+core\service\FitnessClubService.class
+dataprocess\Scheduler.class

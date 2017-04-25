@@ -1,4 +1,2 @@
-datamanage\FitnessFileWrite.class
-datamanage\SchedulerDataImpl.class
-datamanage\MemberDataImpl.class
-datamanage\TimeframeDataImpl.class
+core\service\DefaultFitnessClubService.class
+datamanage\FitnessScheduler.class

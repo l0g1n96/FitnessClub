@@ -7,13 +7,13 @@ import org.junit.Test;
 
 import java.util.*;
 
-public class SchedulerDataImplTest {
+public class FitnessSchedulerTest {
 
-    private Scheduler sData;
+    private FitnessScheduler sData;
 
     @Before
     public void setUp() throws Exception {
-        sData = new Scheduler();
+        sData = new FitnessScheduler();
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -36,9 +36,9 @@ public class SchedulerDataImplTest {
 
         sData.addToScheduler(member, new int[]{9});
 
-        Set<MemberDTO>[] set = sData.getScheduledMembers();
+        Set<MemberDTO> set = sData.getScheduledMembers(9);
 
-        Assert.assertTrue(set[1].contains(member));
+        Assert.assertTrue(set.contains(member));
     }
 
     @Test
@@ -50,9 +50,9 @@ public class SchedulerDataImplTest {
         sData.addToScheduler(member, new int[]{9});
         sData.addToScheduler(member2, new int[]{9});
 
-        Set<MemberDTO>[] set = sData.getScheduledMembers();
+        Set<MemberDTO> set = sData.getScheduledMembers(9);
 
-        Assert.assertTrue(set[1].contains(member) && set[1].contains(member2));
+        Assert.assertTrue(set.contains(member) && set.contains(member2));
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -107,19 +107,19 @@ public class SchedulerDataImplTest {
     @Test
     public void deleteSchedulerTest() {
 
-        //First I have to add to Scheduler so I can see if it is deleted after..
+        //First I have to add to FitnessScheduler so I can see if it is deleted after..
         MemberDTO member = new MemberDTO("a", "a", 1);
         sData.addToScheduler(member, new int[]{9});
-        Set<MemberDTO>[] set = sData.getScheduledMembers();
+        Set<MemberDTO> set = sData.getScheduledMembers(9);
 
         //Deleting...
         sData.deleteScheduler(member, new int[]{9});
 
         //Checking if set does NOT contain given member
-        Assert.assertTrue(!set[1].contains(member));
+        Assert.assertTrue(!set.contains(member));
     }
 
-    /*@Test
+    @Test
     public void longestPeriodAvailableTest() {
 
         sData.addToScheduler(new MemberDTO("Marko", "Devic", 123), new int[]{9});
@@ -141,11 +141,12 @@ public class SchedulerDataImplTest {
         sData.addToScheduler(new MemberDTO("Marko", "v", 137), new int[]{9});
 
         boolean[] freeSlots = sData.findFreeSlots();
-        boolean[] actual = new boolean[]{false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
+        boolean[] actual = new boolean[]{false, true, false, false, false, false, false, false, false, false, false, false};
+
+        Assert.assertArrayEquals(freeSlots, actual);
+    }
 
 
-        Assert.assertEquals(freeSlots, actual);
-    }*/
 
 
 }

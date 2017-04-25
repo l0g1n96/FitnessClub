@@ -3,6 +3,7 @@ package core.service;
 import dto.MemberDTO;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 /**
  * Kljucne metode/servisi neophodni za funkcionisanje programa
@@ -17,5 +18,9 @@ public interface FitnessClubService {
     void findLongestAvailableToday();
 
     MemberDTO searchForMember();
+
+    Set<MemberDTO> showMembersInFitnessClubNow();
+
+    Set<MemberDTO> showTodaysMembers();
 
 }

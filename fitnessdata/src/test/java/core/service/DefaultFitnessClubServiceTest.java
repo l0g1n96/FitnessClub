@@ -6,13 +6,13 @@ import org.junit.Test;
 
 import java.time.LocalDate;
 
-public class FitnessClubServiceImplTest {
+public class DefaultFitnessClubServiceTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void registerForNoMember() {
 
         MemberDTO member = null;
-        FitnessClubServiceImpl fitnessClubService = new FitnessClubServiceImpl();
+        DefaultFitnessClubService fitnessClubService = new DefaultFitnessClubService();
 
         fitnessClubService.register(member, LocalDate.now(), new int[]{9});
     }
@@ -22,7 +22,7 @@ public class FitnessClubServiceImplTest {
 
         MemberDTO member = new MemberDTO("a", "a", 1);
         LocalDate date = null;
-        FitnessClubServiceImpl fitnessClubService = new FitnessClubServiceImpl();
+        DefaultFitnessClubService fitnessClubService = new DefaultFitnessClubService();
 
         fitnessClubService.register(member, date, new int[]{9});
     }
@@ -31,7 +31,7 @@ public class FitnessClubServiceImplTest {
     public void registerFornNoHours() {
 
         MemberDTO member = new MemberDTO("a", "a", 1);
-        FitnessClubServiceImpl fitnessClubService = new FitnessClubServiceImpl();
+        DefaultFitnessClubService fitnessClubService = new DefaultFitnessClubService();
 
         fitnessClubService.register(member, LocalDate.now(), new int[]{});
     }
@@ -40,7 +40,7 @@ public class FitnessClubServiceImplTest {
     public void registerForHoursBiggerThanMaxBookedHours() {
 
         MemberDTO member = new MemberDTO("a", "a", 1);
-        FitnessClubServiceImpl fitnessClub = new FitnessClubServiceImpl();
+        DefaultFitnessClubService fitnessClub = new DefaultFitnessClubService();
 
         fitnessClub.register(member, LocalDate.now(), new int[]{9, 10, 11, 12});
     }
@@ -49,7 +49,7 @@ public class FitnessClubServiceImplTest {
     public void unRegisterForNoMember() {
 
         MemberDTO m = null;
-        FitnessClubServiceImpl fitnessClub = new FitnessClubServiceImpl();
+        DefaultFitnessClubService fitnessClub = new DefaultFitnessClubService();
         fitnessClub.unregister(m, LocalDate.now(), new int[]{9, 10, 11});
 
     }
@@ -58,7 +58,7 @@ public class FitnessClubServiceImplTest {
     public void unRegisterForHoursNoHours() {
 
         MemberDTO m = new MemberDTO("Marko", "Devic", 1234);
-        FitnessClubServiceImpl fitnessClub = new FitnessClubServiceImpl();
+        DefaultFitnessClubService fitnessClub = new DefaultFitnessClubService();
 
         fitnessClub.unregister(m, LocalDate.now(), new int[]{});
     }
@@ -67,7 +67,7 @@ public class FitnessClubServiceImplTest {
     public void unregisterForNoDate() {
 
         MemberDTO m = new MemberDTO("Marko", "Devic", 1234);
-        FitnessClubServiceImpl fitnessClub = new FitnessClubServiceImpl();
+        DefaultFitnessClubService fitnessClub = new DefaultFitnessClubService();
 
         fitnessClub.unregister(m, null, new int[]{9});
     }
@@ -76,7 +76,7 @@ public class FitnessClubServiceImplTest {
     public void unregisterForHoursBiggerThanMaxBookedHours() {
 
         MemberDTO member = new MemberDTO("a", "a", 1);
-        FitnessClubServiceImpl fitnessClub = new FitnessClubServiceImpl();
+        DefaultFitnessClubService fitnessClub = new DefaultFitnessClubService();
 
         fitnessClub.unregister(member, LocalDate.now(), new int[]{9, 10, 11, 12});
     }

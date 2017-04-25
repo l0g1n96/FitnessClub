@@ -1,20 +1,24 @@
 package core.service;
 
-import datamanage.Scheduler;
+import datamanage.FitnessScheduler;
 import dto.MemberDTO;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
 
 /**
  * Kljucni servis neophodan za funkcionisanje programa
  */
 
-public class FitnessClubServiceImpl implements FitnessClubService {
+public class DefaultFitnessClubService implements FitnessClubService {
 
-    private Map<LocalDate, Scheduler> schedulerMap;
+    private Map<LocalDate, FitnessScheduler> schedulerMap;
 
-    public FitnessClubServiceImpl() {
+    public DefaultFitnessClubService() {
         this.schedulerMap = new HashMap<>();
     }
 
@@ -25,9 +29,9 @@ public class FitnessClubServiceImpl implements FitnessClubService {
             throw new IllegalArgumentException("Cannot register, input problem");
         }
 
-        Scheduler scheduler = schedulerMap.computeIfAbsent(date, s -> new Scheduler());
+        FitnessScheduler fitnessScheduler = schedulerMap.computeIfAbsent(date, s -> new FitnessScheduler());
 
-        return scheduler.addToScheduler(member, hours);
+        return fitnessScheduler.addToScheduler(member, hours);
     }
 
     @Override
@@ -40,17 +44,53 @@ public class FitnessClubServiceImpl implements FitnessClubService {
 
         check = schedulerMap.containsKey(date);
 
-        Scheduler scheduler = schedulerMap.get(date);
+        FitnessScheduler fitnessScheduler = schedulerMap.get(date);
 
-        if (scheduler == null) {
-            System.out.println("No Scheduler");
+        if (fitnessScheduler == null) {
+            System.out.println("No FitnessScheduler");
             return false;
         }
 
-        scheduler.deleteScheduler(member, hours);
+        fitnessScheduler.deleteScheduler(member, hours);
 
         return check;
     }
+
+    /**
+     * Resava stavku a
+     * izbacuje sve clanove koji su trenutno u fitnes klubu
+     *
+     * @return Set membera, ako nema nikog vraca se null
+     */
+
+    @Override
+    public Set<MemberDTO> showMembersInFitnessClubNow() {
+        FitnessScheduler fitnessScheduler = schedulerMap.get(LocalDate.now());
+        if (fitnessScheduler == null) {
+            return null;
+        }
+
+        int hour = LocalDateTime.now().getHour();
+        return fitnessScheduler.getScheduledMembers(hour);
+    }
+
+    /**
+     * Resava stavku b
+     * izbacuje sve clanove koji su danas u fitnes klubu
+     *
+     * @return Set membera, ako nema nikog vraca se null
+     */
+
+    @Override
+    public Set<MemberDTO> showTodaysMembers() {
+        FitnessScheduler scheduler = schedulerMap.get(LocalDate.now());
+        if (scheduler == null) {
+            return null;
+        }
+
+        return scheduler.getAllScheduledMembers();
+    }
+
 
     /**
      * Resava stavku c
@@ -61,29 +101,20 @@ public class FitnessClubServiceImpl implements FitnessClubService {
 
     @Override
     public MemberDTO searchForMember() {
-
         Scanner s = new Scanner(System.in);
 
         System.out.println("Insert a lastname of member you want to search:");
         String lastname = s.nextLine();
 
-        for (Map.Entry<LocalDate, Scheduler> schedulerEntry : schedulerMap.entrySet()) {
-            for (Set<MemberDTO> memberSet : schedulerEntry.getValue().getScheduledMembers()) {
-                Optional<MemberDTO> memberOptional = memberSet.stream()
-                        .filter(m -> m.getLastname().toLowerCase().equals(lastname.toLowerCase())).findFirst();
-
-                if (memberOptional.isPresent()) {
-                    String name = memberOptional.get().getName();
-                    int id = memberOptional.get().getId();
-
-                    return new MemberDTO(name, lastname, id);
-                }
+        for (Map.Entry<LocalDate, FitnessScheduler> schedulerEntry : schedulerMap.entrySet()) {
+            MemberDTO member = schedulerEntry.getValue().getMember(lastname);
+            if (member != null) {
+                return member;
             }
         }
 
         return null;
     }
-
 
     /**
      * Resava stavku d1
@@ -137,14 +168,14 @@ public class FitnessClubServiceImpl implements FitnessClubService {
 
         boolean[] registerHours = register(member, date, hours);
 
-        Scheduler scheduler = schedulerMap.get(date);
+        FitnessScheduler fitnessScheduler = schedulerMap.get(date);
 
-        if (scheduler == null) {
-            System.out.println("No Scheduler!");
+        if (fitnessScheduler == null) {
+            System.out.println("No FitnessScheduler!");
             return;
         }
 
-        boolean[] freeSlots = scheduler.findFreeSlots();
+        boolean[] freeSlots = fitnessScheduler.findFreeSlots();
 
         for (int i = 0; i < registerHours.length; i++) {
 
@@ -154,15 +185,11 @@ public class FitnessClubServiceImpl implements FitnessClubService {
                 System.out.println("You can book for ");
 
                 for (int j = 0; j < freeSlots.length; j++) {
-                    if (!freeSlots[i]) {
-                        System.out.print("" + i + " hour");
+                    if (!freeSlots[j]) {
+                        System.out.print("" + j + " hour ");
                     }
                 }
             }
         }
-    }
-
-    public Map<LocalDate, Scheduler> getSchedulerMap() {
-        return schedulerMap;
     }
 }
