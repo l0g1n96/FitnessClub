@@ -55,5 +55,4 @@ public class ConsolePrinter implements ResultPrinter {
         printStream.println(member);
     }
 
-
 }
