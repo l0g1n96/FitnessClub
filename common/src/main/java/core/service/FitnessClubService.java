@@ -15,9 +15,9 @@ public interface FitnessClubService {
 
     boolean unregister(MemberDTO member, LocalDate date, int[] hours);
 
-    void findLongestAvailableToday();
+    boolean[] findLongestAvailableToday(LocalDate date);
 
-    MemberDTO searchForMember();
+    MemberDTO searchForMember(String lastname);
 
     Set<MemberDTO> showMembersInFitnessClubNow();
 

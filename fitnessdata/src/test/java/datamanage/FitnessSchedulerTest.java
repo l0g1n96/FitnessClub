@@ -1,15 +1,17 @@
 package datamanage;
 
+import dataprocess.Scheduler;
 import dto.MemberDTO;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class FitnessSchedulerTest {
 
-    private FitnessScheduler sData;
+    private Scheduler sData;
 
     @Before
     public void setUp() throws Exception {
@@ -120,7 +122,7 @@ public class FitnessSchedulerTest {
     }
 
     @Test
-    public void longestPeriodAvailableTest() {
+    public void findFreeSlots() {
 
         sData.addToScheduler(new MemberDTO("Marko", "Devic", 123), new int[]{9});
         sData.addToScheduler(new MemberDTO("Marko", "Markovic", 124), new int[]{9});
@@ -146,7 +148,59 @@ public class FitnessSchedulerTest {
         Assert.assertArrayEquals(freeSlots, actual);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void getSchedulerMembersForHoursSmallerThanBeginningHour() {
+        sData.getScheduledMembers(7);
+    }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void getSchedulerMembersForHoursBiggerThanWorkingHours() {
+        sData.getScheduledMembers(21);
+    }
 
+    @Test
+    public void getSchedulerMembersForHourTest() {
+        MemberDTO member = new MemberDTO("Marko", "Devic", 1);
 
+        sData.addToScheduler(member, new int[]{9});
+        Set<MemberDTO> scheduledMembers = sData.getScheduledMembers(9);
+
+        Assert.assertTrue(scheduledMembers.contains(member));
+    }
+
+    @Test
+    public void getSchedulerMembers() {
+
+        MemberDTO m1 = new MemberDTO("Marko", "Devic", 1);
+        MemberDTO m2 = new MemberDTO("m", "d", 2);
+        MemberDTO m3 = new MemberDTO("w", "d", 3);
+        Set<MemberDTO> members = new HashSet<>();
+
+        members.add(m1);
+        members.add(m2);
+        members.add(m3);
+
+        sData.addToScheduler(m1, new int[]{9});
+        sData.addToScheduler(m2, new int[]{9});
+        sData.addToScheduler(m3, new int[]{9});
+
+        Set<MemberDTO> allScheduledMembers = sData.getAllScheduledMembers();
+        Assert.assertEquals(members, allScheduledMembers);
+    }
+
+    @Test
+    public void getMemberNull() {
+        Assert.assertNull(sData.getMember(""));
+    }
+
+    @Test
+    public void getMemberTest() {
+
+        MemberDTO member = new MemberDTO("Marko", "Devic", 1);
+        sData.addToScheduler(member, new int[]{9});
+
+        MemberDTO searchMember = sData.getMember("Devic");
+        Assert.assertEquals(member, searchMember);
+
+    }
 }

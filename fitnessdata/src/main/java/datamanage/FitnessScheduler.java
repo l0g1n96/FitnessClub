@@ -26,7 +26,6 @@ public class FitnessScheduler implements Scheduler {
 
     @Override
     public boolean[] addToScheduler(MemberDTO member, int[] hours) {
-
         boolean[] freeTime = new boolean[WORKING_HOURS];
         int currentMaxBookedHours = MAX_BOOKED_HOURS;
 
@@ -64,7 +63,6 @@ public class FitnessScheduler implements Scheduler {
 
     @Override
     public void deleteScheduler(MemberDTO member, int[] hours) {
-
         if (member == null || hours.length == 0 || hours.length > MAX_BOOKED_HOURS) {
             throw new IllegalArgumentException("Cannot delete for this hour, or you didn't insert a member");
         }
@@ -83,7 +81,6 @@ public class FitnessScheduler implements Scheduler {
 
     @Override
     public boolean[] findFreeSlots() {
-
         boolean[] freeTime = new boolean[WORKING_HOURS];
 
         for (int i = 0; i < scheduledMembers.length; i++) {
