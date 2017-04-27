@@ -102,8 +102,7 @@ public class ConsoleReader implements InputDataReader {
         String d = scanner.next();
 
         try {
-            LocalDate date = LocalDate.parse(d);
-            return date;
+            return LocalDate.parse(d);
         } catch (DateTimeParseException dte) {
             printStream.println("Wrong input date!");
             printStream.println();
