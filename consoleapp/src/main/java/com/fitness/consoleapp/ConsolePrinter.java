@@ -9,7 +9,7 @@ import java.util.Objects;
 public class ConsolePrinter implements ResultPrinter {
     private PrintStream printStream;
 
-    ConsolePrinter(PrintStream printStream) {
+    public ConsolePrinter(PrintStream printStream) {
         this.printStream = printStream;
     }
 
@@ -30,29 +30,38 @@ public class ConsolePrinter implements ResultPrinter {
 
     @Override
     public void printMenu() {
-        System.out.println("=========================================");
-        System.out.println("Options:");
-        System.out.println("1: List of members that are in currently");
-        System.out.println("2: List of members that are in today");
-        System.out.println("3: Search by lastname");
-        System.out.println("4: Registration and Reservation");
-        System.out.println("0: Exit");
-        System.out.println("=========================================");
-        System.out.println();
+        printStream.println("=========================================");
+        printStream.println("Options:");
+        printStream.println("1: List of members that are in currently");
+        printStream.println("2: List of members that are in today");
+        printStream.println("3: Search by lastname");
+        printStream.println("4: Registration and Reservation");
+        printStream.println("0: Exit");
+        printStream.println("=========================================");
+        printStream.println();
     }
 
     @Override
     public void printMembers(Collection<MemberDTO> members) {
         Objects.requireNonNull(members, "members == null");
 
-        for(MemberDTO m : members) {
+        for (MemberDTO m : members) {
             printMember(m);
+        }
+
+        if (members.isEmpty()) {
+            printStream.println("There are no members!");
+            printStream.println();
         }
     }
 
     @Override
     public void printMember(MemberDTO member) {
-        printStream.println(member);
+        if (member != null) {
+            printStream.println(member);
+        } else {
+            printStream.println("Member not found!");
+        }
+        printStream.println();
     }
-
 }

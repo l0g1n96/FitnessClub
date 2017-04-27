@@ -11,7 +11,7 @@ public class FitnessUI {
 
     private static DefaultFitnessClubService fitnessClub = new DefaultFitnessClubService();
 
-    private static InputDataReader input = new ConsoleReader(System.in);
+    private static InputDataReader input = new ConsoleReader(System.in, System.out);
     private static ResultPrinter printer = new ConsolePrinter(System.out);
 
     public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class FitnessUI {
             printer.printMenu();
             FitnessInputDTO optionNumber = input.readFitnessInputDTO();
 
-            if (optionNumber.getOptionNumber() == 0) {
+            if (optionNumber == null || optionNumber.getOptionNumber() == 0) {
                 break;
             }
 
@@ -52,9 +52,22 @@ public class FitnessUI {
 
             case 4:
                 MemberDTO memberDTO = input.readMemberDto();
+                if (memberDTO == null) {
+                    break;
+                }
+
                 int numHour = input.readNumHour();
+                if (numHour == -1) {
+                    break;
+                }
                 int[] hours = input.readHours(numHour);
+                if (hours == null) {
+                    break;
+                }
                 LocalDate date = input.readDate();
+                if (date == null) {
+                    break;
+                }
 
                 boolean[] registerHours = fitnessClub.register(memberDTO, date, hours);
                 boolean[] freeSlots = fitnessClub.findLongestAvailableToday(date);

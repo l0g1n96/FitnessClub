@@ -1,12 +1,12 @@
 package core.service;
 
-
 import dto.MemberDTO;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,16 +21,14 @@ public class DefaultFitnessClubServiceTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void registerForNoMember() {
-        MemberDTO member = null;
-        fitnessClubService.register(member, LocalDate.now(), new int[]{9});
+        fitnessClubService.register(null, LocalDate.now(), new int[]{9});
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void registerForNoDate() {
 
         MemberDTO member = new MemberDTO("a", "a", 1);
-        LocalDate date = null;
-        fitnessClubService.register(member, date, new int[]{9});
+        fitnessClubService.register(member, null, new int[]{9});
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -41,15 +39,13 @@ public class DefaultFitnessClubServiceTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void registerForHoursBiggerThanMaxBookedHours() {
-
         MemberDTO member = new MemberDTO("a", "a", 1);
         fitnessClubService.register(member, LocalDate.now(), new int[]{9, 10, 11, 12});
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void unRegisterForNoMember() {
-        MemberDTO m = null;
-        fitnessClubService.unregister(m, LocalDate.now(), new int[]{9, 10, 11});
+        fitnessClubService.unregister(null, LocalDate.now(), new int[]{9, 10, 11});
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -82,9 +78,10 @@ public class DefaultFitnessClubServiceTest {
         members.add(m2);
         members.add(m3);
 
-        fitnessClubService.register(m1, LocalDate.now(), new int[]{12, 13});
-        fitnessClubService.register(m2, LocalDate.now(), new int[]{12, 13});
-        fitnessClubService.register(m3, LocalDate.now(), new int[]{12, 13});
+        int[] hours = {LocalDateTime.now().getHour(), LocalDateTime.now().getHour() + 1};
+        fitnessClubService.register(m1, LocalDate.now(), hours);
+        fitnessClubService.register(m2, LocalDate.now(), hours);
+        fitnessClubService.register(m3, LocalDate.now(), hours);
 
         Set<MemberDTO> memberSet = fitnessClubService.showMembersInFitnessClubNow();
         Assert.assertEquals(members, memberSet);
@@ -104,9 +101,10 @@ public class DefaultFitnessClubServiceTest {
         members.add(m2);
         members.add(m3);
 
-        fitnessClubService.register(m1, date, new int[]{12, 13});
-        fitnessClubService.register(m2, date, new int[]{12, 13});
-        fitnessClubService.register(m3, date, new int[]{12, 13});
+        int[] hours = {LocalDateTime.now().getHour(), LocalDateTime.now().getHour() + 1};
+        fitnessClubService.register(m1, LocalDate.now(), hours);
+        fitnessClubService.register(m2, LocalDate.now(), hours);
+        fitnessClubService.register(m3, LocalDate.now(), hours);
 
         Set<MemberDTO> memberSet = fitnessClubService.showMembersInFitnessClubNow();
         Assert.assertEquals(members, memberSet);

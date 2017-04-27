@@ -12,8 +12,8 @@ public class FitnessScheduler implements Scheduler {
     private static final int WORKING_HOURS = 12;
     private static final int MAX_CAPACITY = 16;
     private static final int MAX_BOOKED_HOURS = 3;
-    private static final int BEGINNING_HOUR = 8;
-    private static final int ENDING_HOUR = BEGINNING_HOUR + WORKING_HOURS;
+    public static final int BEGINNING_HOUR = 8;
+    public static final int ENDING_HOUR = BEGINNING_HOUR + WORKING_HOURS;
 
     private Set<MemberDTO>[] scheduledMembers;
 
