@@ -1,11 +1,13 @@
 package com.fitness.consoleapp;
 
 import dto.MemberDTO;
+import org.springframework.stereotype.Component;
 
 import java.io.PrintStream;
 import java.util.Collection;
 import java.util.Objects;
 
+@Component
 public class ConsolePrinter implements ResultPrinter {
     private PrintStream printStream;
 

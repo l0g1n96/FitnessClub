@@ -3,6 +3,7 @@ package com.fitness.consoleapp;
 import datamanage.FitnessScheduler;
 import dto.FitnessInputDTO;
 import dto.MemberDTO;
+import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
+@Component
 public class ConsoleReader implements InputDataReader {
     private Scanner scanner;
     private PrintStream printStream;

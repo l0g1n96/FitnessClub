@@ -3,6 +3,7 @@ package core.service;
 import datamanage.FitnessScheduler;
 import dataprocess.Scheduler;
 import dto.MemberDTO;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ import java.util.Set;
  * Kljucni servis neophodan za funkcionisanje programa
  */
 
+@Component
 public class DefaultFitnessClubService implements FitnessClubService {
 
     private Map<LocalDate, Scheduler> schedulerMap;
