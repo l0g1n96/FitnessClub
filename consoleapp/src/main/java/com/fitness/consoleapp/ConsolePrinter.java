@@ -66,4 +66,8 @@ public class ConsolePrinter implements ResultPrinter {
         }
         printStream.println();
     }
+
+    public PrintStream getPrintStream() {
+        return printStream;
+    }
 }

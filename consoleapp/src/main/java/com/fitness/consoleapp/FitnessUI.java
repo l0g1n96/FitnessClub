@@ -3,16 +3,19 @@ package com.fitness.consoleapp;
 import core.service.DefaultFitnessClubService;
 import dto.FitnessInputDTO;
 import dto.MemberDTO;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.time.LocalDate;
 import java.util.Set;
 
 public class FitnessUI {
 
-    private static DefaultFitnessClubService fitnessClub = new DefaultFitnessClubService();
+    private static ApplicationContext context = new AnnotationConfigApplicationContext(JavaSpringConfig.class);
 
-    private static InputDataReader input = new ConsoleReader(System.in, System.out);
-    private static ResultPrinter printer = new ConsolePrinter(System.out);
+    private static DefaultFitnessClubService fitnessClub = (DefaultFitnessClubService) context.getBean("fitness");
+    private static InputDataReader input = (InputDataReader) context.getBean("dataReader");
+    private static ResultPrinter printer = (ResultPrinter) context.getBean("print");
 
     public static void main(String[] args) {
 
