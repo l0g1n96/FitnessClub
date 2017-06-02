@@ -10,7 +10,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-
 public class ConsoleReader implements InputDataReader {
     private Scanner scanner;
     private PrintStream printStream;

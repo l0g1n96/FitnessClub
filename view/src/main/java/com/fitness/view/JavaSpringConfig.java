@@ -1,15 +1,16 @@
 package com.fitness.view;
 
 import com.fitness.common.service.FitnessClubService;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import com.fitness.RootPackageMarker;
+import com.fitness.service.JavaSpringFitnessConfig;
+import org.springframework.context.annotation.*;
 
 import java.io.InputStream;
 import java.io.PrintStream;
 
 @Configuration
-@ComponentScan(basePackages = "com.fitness")
+//@Import(JavaSpringFitnessConfig.class)
+@ComponentScan(basePackageClasses = RootPackageMarker.class)
 public class JavaSpringConfig {
 
     @Bean

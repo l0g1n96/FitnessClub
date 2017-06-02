@@ -3,12 +3,10 @@ package com.fitness.view;
 import com.fitness.common.dto.FitnessInputDTO;
 import com.fitness.common.dto.MemberDTO;
 import com.fitness.common.service.FitnessClubService;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.Set;
 
-@Component
 public class FitnessUI {
     private final FitnessClubService fitnessClub;
     private final InputDataReader input;
