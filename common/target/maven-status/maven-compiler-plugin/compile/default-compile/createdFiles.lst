@@ -1,4 +1,4 @@
-dto\FitnessInputDTO.class
-dto\MemberDTO.class
-core\service\FitnessClubService.class
-dataprocess\Scheduler.class
+com\fitness\common\dto\FitnessInputDTO.class
+com\fitness\common\Scheduler.class
+com\fitness\common\service\FitnessClubService.class
+com\fitness\common\dto\MemberDTO.class

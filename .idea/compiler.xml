@@ -8,14 +8,22 @@
         <outputRelativeToContentRoot value="true" />
         <module name="common" />
         <module name="consoleapp" />
+        <module name="fitness-data" />
+        <module name="fitness-service" />
         <module name="fitnessdata" />
+        <module name="service" />
+        <module name="view" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="common" target="1.8" />
       <module name="consoleapp" target="1.8" />
+      <module name="fitness-data" target="1.8" />
+      <module name="fitness-service" target="1.8" />
       <module name="fitnessdata" target="1.8" />
       <module name="proba1" target="1.8" />
+      <module name="service" target="1.8" />
+      <module name="view" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
