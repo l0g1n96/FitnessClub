@@ -1,6 +1,6 @@
 package com.fitness.service;
 
-import com.fitness.common.Scheduler;
+import com.fitness.common.service.Scheduler;
 import com.fitness.common.dto.MemberDTO;
 import com.fitness.common.service.FitnessClubService;
 

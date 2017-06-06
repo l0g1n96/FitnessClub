@@ -1,6 +1,6 @@
 package com.fitness.service;
 
-import com.fitness.common.Scheduler;
+import com.fitness.common.service.Scheduler;
 import com.fitness.common.service.FitnessClubService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class JavaSpringFitnessConfig {
 
     @Bean
-    public FitnessClubService fitnessClubService() {
+    public FitnessClubService fitnessClub() {
         return new DefaultFitnessClubService();
     }
 
@@ -17,4 +17,5 @@ public class JavaSpringFitnessConfig {
     public Scheduler scheduler() {
         return new FitnessScheduler();
     }
+
 }

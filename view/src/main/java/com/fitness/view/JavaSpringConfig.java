@@ -1,9 +1,10 @@
 package com.fitness.view;
 
-import com.fitness.common.service.FitnessClubService;
 import com.fitness.RootPackageMarker;
-import com.fitness.service.JavaSpringFitnessConfig;
-import org.springframework.context.annotation.*;
+import com.fitness.common.service.FitnessClubService;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -29,12 +30,14 @@ public class JavaSpringConfig {
     }
 
     @Bean
-    public InputDataReader inputDataReader(InputStream inputStream, PrintStream printStream) {
-        return new ConsoleReader(inputStream, printStream);
+    public InputDataReader inputDataReader(InputStream input, PrintStream print) {
+        return new ConsoleReader(input, print);
     }
 
     @Bean
-    public FitnessUI fitnessUI(FitnessClubService fitnessClub, InputDataReader input, ResultPrinter print) {
-        return new FitnessUI(fitnessClub, input, print);
+    public FitnessUI fitnessUI(FitnessClubService fitnessClub, InputDataReader input, ResultPrinter printer) {
+        return new FitnessUI(fitnessClub, input, printer);
     }
+
+
 }

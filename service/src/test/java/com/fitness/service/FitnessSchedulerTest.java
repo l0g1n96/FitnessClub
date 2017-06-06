@@ -1,6 +1,6 @@
 package com.fitness.service;
 
-import com.fitness.common.Scheduler;
+import com.fitness.common.service.Scheduler;
 import com.fitness.common.dto.MemberDTO;
 import org.junit.Assert;
 import org.junit.Before;

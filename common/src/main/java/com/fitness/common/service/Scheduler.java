@@ -1,4 +1,4 @@
-package com.fitness.common;
+package com.fitness.common.service;
 
 import com.fitness.common.dto.MemberDTO;
 
