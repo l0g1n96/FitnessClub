@@ -27,7 +27,6 @@ public class DefaultFitnessClubServiceTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void registerForNoDate() {
-
         MemberDTO member = new MemberDTO("a", "a", 1);
         fitnessClubService.register(member, null, new int[]{9});
     }
@@ -50,8 +49,7 @@ public class DefaultFitnessClubServiceTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void unRegisterForHoursNoHours() {
-
+    public void unRegisterForNoHours() {
         MemberDTO m = new MemberDTO("Marko", "Devic", 1234);
         fitnessClubService.unregister(m, LocalDate.now(), new int[]{});
     }
@@ -90,9 +88,6 @@ public class DefaultFitnessClubServiceTest {
 
     @Test
     public void showTodaysMembers() {
-        String sDate = "2017-04-27";
-        LocalDate date = LocalDate.parse(sDate);
-
         MemberDTO m1 = new MemberDTO("Marko", "Devic", 1);
         MemberDTO m2 = new MemberDTO("m", "d", 2);
         MemberDTO m3 = new MemberDTO("w", "d", 3);

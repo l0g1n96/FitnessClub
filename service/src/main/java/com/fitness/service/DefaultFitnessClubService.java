@@ -1,8 +1,8 @@
 package com.fitness.service;
 
-import com.fitness.common.service.Scheduler;
 import com.fitness.common.dto.MemberDTO;
 import com.fitness.common.service.FitnessClubService;
+import com.fitness.common.service.Scheduler;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -11,14 +11,14 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Kljucni servis neophodan za funkcionisanje programa
+ * Necessary service for program functioning
  */
 
 public class DefaultFitnessClubService implements FitnessClubService {
 
     private Map<LocalDate, Scheduler> schedulerMap;
 
-    public DefaultFitnessClubService() {
+    DefaultFitnessClubService() {
         this.schedulerMap = new HashMap<>();
     }
 
@@ -54,6 +54,7 @@ public class DefaultFitnessClubService implements FitnessClubService {
      *
      * @return Set membera, ako nema nikog vraca se null
      */
+
     @Override
     public Set<MemberDTO> showMembersInFitnessClubNow() {
         Scheduler scheduler = schedulerMap.computeIfAbsent(LocalDate.now(), ld -> new FitnessScheduler());
@@ -68,6 +69,7 @@ public class DefaultFitnessClubService implements FitnessClubService {
      *
      * @return Set membera, ako nema nikog vraca se null
      */
+
     @Override
     public Set<MemberDTO> showTodaysMembers() {
         Scheduler scheduler = schedulerMap.computeIfAbsent(LocalDate.now(), ld -> new FitnessScheduler());
@@ -80,6 +82,7 @@ public class DefaultFitnessClubService implements FitnessClubService {
      *
      * @return Member-a sa datim prezimenom, ako ne postoji vrati null
      */
+
     @Override
     public MemberDTO searchForMember(String lastname) {
         for (Map.Entry<LocalDate, Scheduler> schedulerEntry : schedulerMap.entrySet()) {
@@ -100,10 +103,10 @@ public class DefaultFitnessClubService implements FitnessClubService {
      * @return Najduzi period danas dostupan ili null (!!!) ako danas uopste nema ista
      * slobodno
      */
+
     @Override
     public boolean[] findLongestAvailableToday(LocalDate date) {
         Scheduler scheduler = schedulerMap.computeIfAbsent(date, ld -> new FitnessScheduler());
         return scheduler.findFreeSlots();
     }
-
 }

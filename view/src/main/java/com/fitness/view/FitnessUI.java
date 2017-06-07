@@ -8,11 +8,12 @@ import java.time.LocalDate;
 import java.util.Set;
 
 public class FitnessUI {
+
     private final FitnessClubService fitnessClub;
     private final InputDataReader input;
     private final ResultPrinter printer;
 
-    public FitnessUI(FitnessClubService fitnessClub, InputDataReader input, ResultPrinter printer) {
+    FitnessUI(FitnessClubService fitnessClub, InputDataReader input, ResultPrinter printer) {
         this.fitnessClub = fitnessClub;
         this.input = input;
         this.printer = printer;
@@ -60,14 +61,19 @@ public class FitnessUI {
                 }
 
                 int numHour = input.readNumHour();
+
                 if (numHour == -1) {
                     break;
                 }
+
                 int[] hours = input.readHours(numHour);
+
                 if (hours == null) {
                     break;
                 }
+
                 LocalDate date = input.readDate();
+
                 if (date == null) {
                     break;
                 }
@@ -79,5 +85,4 @@ public class FitnessUI {
                 break;
         }
     }
-
 }

@@ -1,7 +1,7 @@
 package com.fitness.service;
 
-import com.fitness.common.service.Scheduler;
 import com.fitness.common.dto.MemberDTO;
+import com.fitness.common.service.Scheduler;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -30,13 +30,13 @@ public class FitnessScheduler implements Scheduler {
         int currentMaxBookedHours = MAX_BOOKED_HOURS;
 
         if (member == null || hours.length == 0 || hours.length > currentMaxBookedHours) {
-            throw new IllegalArgumentException("Cannot be null");
+            throw new IllegalArgumentException("Member or hour cannot be null");
         }
 
         for (int hour : hours) {
 
             if (hour < BEGINNING_HOUR || hour > ENDING_HOUR) {
-                throw new IllegalArgumentException("Fitness Club cannot reserve for this hour");
+                throw new IllegalArgumentException("Fitness Club is closed for this hour");
             }
 
             for (Set<MemberDTO> membersSet : scheduledMembers) {
@@ -64,11 +64,10 @@ public class FitnessScheduler implements Scheduler {
     @Override
     public void deleteScheduler(MemberDTO member, int[] hours) {
         if (member == null || hours.length == 0 || hours.length > MAX_BOOKED_HOURS) {
-            throw new IllegalArgumentException("Cannot delete for this hour, or you didn't insert a member");
+            throw new IllegalArgumentException("No member or invalid reserve hour");
         }
 
         for (int hour : hours) {
-
             if (hour <= BEGINNING_HOUR || hour > ENDING_HOUR) {
                 throw new IllegalArgumentException("Hour is wrong");
             }
@@ -118,6 +117,7 @@ public class FitnessScheduler implements Scheduler {
                 return memberOptional.get();
             }
         }
+
         return null;
     }
 }

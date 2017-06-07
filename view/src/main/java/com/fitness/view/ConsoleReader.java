@@ -11,34 +11,41 @@ import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class ConsoleReader implements InputDataReader {
+
     private Scanner scanner;
     private PrintStream printStream;
 
-    public ConsoleReader(InputStream inputStream, PrintStream printStream) {
+    ConsoleReader(InputStream inputStream, PrintStream printStream) {
         this.scanner = new Scanner(inputStream);
         this.printStream = printStream;
     }
 
     @Override
     public FitnessInputDTO readFitnessInputDTO() {
+
         printStream.println("Choose an option by number:");
 
         if (scanner.hasNextInt()) {
             int optionNumber = scanner.nextInt();
+
             if (optionNumber < 0 || optionNumber > 5) {
                 return null;
             }
+
             return new FitnessInputDTO(optionNumber);
         } else {
+
             String error = scanner.next();
             printStream.println("\"" + error + "\" cannot be a option number!");
             printStream.println();
+
             return null;
         }
     }
 
     @Override
     public MemberDTO readMemberDto() {
+
         printStream.println("Insert your name:");
         String name = scanner.next();
 
@@ -46,10 +53,12 @@ public class ConsoleReader implements InputDataReader {
         String lastname = scanner.next();
 
         printStream.println("Insert your ID:");
+
         if (scanner.hasNextInt()) {
             int id = scanner.nextInt();
             return new MemberDTO(name, lastname, id);
         } else {
+
             String error = scanner.next();
             printStream.println("\"" + error + "\" cannot be a member ID!");
             printStream.println();
@@ -61,6 +70,7 @@ public class ConsoleReader implements InputDataReader {
     public int readNumHour() {
 
         printStream.println("How much hours would you like to reserve? (>0 && 4<)");
+
         if (scanner.hasNextInt()) {
             int h = scanner.nextInt();
 
@@ -82,6 +92,7 @@ public class ConsoleReader implements InputDataReader {
 
         for (int i = 0; i < hours.length; i++) {
             printStream.println("Please insert " + (i + 1) + ". hour: (" + FitnessScheduler.BEGINNING_HOUR + "h - " + FitnessScheduler.ENDING_HOUR + "h)");
+
             if (scanner.hasNextInt()) {
                 hours[i] = scanner.nextInt();
 
@@ -103,7 +114,7 @@ public class ConsoleReader implements InputDataReader {
 
         try {
             return LocalDate.parse(d);
-        } catch (DateTimeParseException dte) {
+        } catch (DateTimeParseException dt) {
             printStream.println("Wrong input date!");
             printStream.println();
             return null;

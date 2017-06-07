@@ -7,18 +7,21 @@ import java.util.Collection;
 import java.util.Objects;
 
 public class ConsolePrinter implements ResultPrinter {
+
     private PrintStream printStream;
 
-    public ConsolePrinter(PrintStream printStream) {
+    ConsolePrinter(PrintStream printStream) {
         this.printStream = printStream;
     }
 
     @Override
     public void printFreeTime(boolean[] registerHours, boolean[] freeSlots) {
         for (int i = 0; i < registerHours.length; i++) {
+
             if (registerHours[i]) {
                 printStream.println("You cannot book for " + i + " slot, it's full!");
                 printStream.println("You can book for ");
+
                 for (int j = 0; j < freeSlots.length; j++) {
                     if (!freeSlots[j]) {
                         printStream.print("" + j + " hour ");

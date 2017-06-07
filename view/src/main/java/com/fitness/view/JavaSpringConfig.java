@@ -38,6 +38,4 @@ public class JavaSpringConfig {
     public FitnessUI fitnessUI(FitnessClubService fitnessClub, InputDataReader input, ResultPrinter printer) {
         return new FitnessUI(fitnessClub, input, printer);
     }
-
-
 }

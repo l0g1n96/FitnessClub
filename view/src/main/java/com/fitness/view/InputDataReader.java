@@ -18,5 +18,4 @@ public interface InputDataReader {
     LocalDate readDate();
 
     String readLastname();
-
 }
